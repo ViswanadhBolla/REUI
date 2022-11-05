@@ -2,7 +2,7 @@
   "Id":1,
   "SellRent":1,
   "Name":"Birla House",
-  "Type":"House",
+  "PType":"House",
   "Price":1200,
   "Image":"house1"
 
@@ -12,7 +12,7 @@
   "Id":2,
   "SellRent":2,
   "Name":"Tata House",
-  "Type":"House",
+  "PType":"House",
   "Price":1300,
   "Image":"house2"
 
@@ -21,7 +21,7 @@
   "Id":3,
   "SellRent":1,
   "Name":"Santo House",
-  "Type":"House",
+  "PType":"House",
   "Price":1400,
   "Image":"house3"
 
