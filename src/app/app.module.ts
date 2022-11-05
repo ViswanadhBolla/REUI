@@ -19,6 +19,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { UserRegisterComponent } from './user/user-register/user-register.component';
 import {ButtonsModule} from 'ngx-bootstrap/buttons'
+import { AboutComponent } from './about/about.component';
+import { ComplaintComponent } from './complaint/complaint.component';
+import { ComplaintService } from './services/complaint.service';
+import{GoogleMapsModule} from "@angular/google-maps"
+import { GooglemapComponent } from './google-map/googlemap.component';
+
 
 
 
@@ -31,7 +37,10 @@ import {ButtonsModule} from 'ngx-bootstrap/buttons'
       AddPropertyComponent,
       PropertyDetailComponent,
       UserLoginComponent,
-      UserRegisterComponent
+      UserRegisterComponent,
+      AboutComponent,
+      ComplaintComponent,
+      GooglemapComponent
    ],
   imports: [
     BrowserModule,
@@ -42,11 +51,12 @@ import {ButtonsModule} from 'ngx-bootstrap/buttons'
     BrowserAnimationsModule,
     BsDropdownModule,
     TabsModule,
-    ButtonsModule
+    ButtonsModule,
+    GoogleMapsModule
 
   ],
   providers: [
-    HousingService
+    HousingService,ComplaintService
   ],
   bootstrap: [AppComponent]
 })
