@@ -11,7 +11,7 @@
             <button class="btn btn-outline-dark"><i class="bi bi-person-lines-fill"></i></button>
           </li>
           <li class="list-inline-item">
-            <button class="btn btn-outline-danger" routerLink="/maps/{{property.City}}"><i class="bi bi-geo-alt"></i></button>
+            <button [hidden]="status"  class="btn btn-outline-danger"  routerLinkActive="active" routerLink="/maps/{{property.City}}"><i class="bi bi-geo-alt"></i></button>
           </li>
         </ul>
       </div>
@@ -28,7 +28,11 @@
 
         <hr class="mt-0 mb-2">
 
-        <h6 class="mb-0">Price: <span class>{{property.Price}} USD.</span> |
+        <h6 class="mb-0">Price: <span>{{property.Price}}
+           <select  class="btn btn-outline-dark  " #teams (change)="onSelected(teams.value)"id="country" #range name="range">
+          <option class="btn btn-outline-primary" >USD</option>
+          <option >INR</option>
+        </select></span> |
           Area:  <span>{{property.BuiltArea}} Sq Ft </span> </h6>
       </div>
     </div>

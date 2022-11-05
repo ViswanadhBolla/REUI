@@ -19,6 +19,7 @@ const routes: Routes = [
   {path:"complaint",component:ComplaintComponent},
   {path:"about",component:AboutComponent},
   {path:"maps/:city",component:GooglemapComponent},
+  {path:"maps",component:GooglemapComponent},
   {path:'**',component:PropertyListComponent}
 ];
 
