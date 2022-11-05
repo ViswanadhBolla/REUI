@@ -40,6 +40,8 @@ onBack(){
 
 onSubmit(Form: NgForm){
   console.log('congrats,form submitted');
+  console.log("SellRent " + Form.value.BasicInfo.SellRent);
+
   console.log(Form);
 
 
