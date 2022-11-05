@@ -18,7 +18,7 @@ const routes: Routes = [
   {path:'user/register',component:UserRegisterComponent},
   {path:"complaint",component:ComplaintComponent},
   {path:"about",component:AboutComponent},
-  {path:"maps",component:GooglemapComponent},
+  {path:"maps/:city",component:GooglemapComponent},
   {path:'**',component:PropertyListComponent}
 ];
 

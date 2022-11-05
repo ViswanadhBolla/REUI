@@ -1,4 +1,6 @@
+import { Call } from '@angular/compiler';
 import { AfterViewInit, Component, Injectable, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-googlemap',
@@ -9,9 +11,10 @@ import { AfterViewInit, Component, Injectable, OnInit } from '@angular/core';
 
 export class GooglemapComponent implements OnInit {
 lat =1
-  lng: any;
+address=this.route.snapshot.paramMap.get("city")
+
   position= {lat: null, lng: null};
-  constructor() {}
+  constructor(private route:ActivatedRoute) {}
   ngOnInit(): void {
     if (!navigator.geolocation) {
       console.log('not supported');
@@ -26,7 +29,7 @@ lat =1
   }
 
   cordinates = new google.maps.Geocoder().geocode(
-    { address: 'delhi' },
+    { address: this.address },
     function (results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
         console.log('hello');
@@ -38,10 +41,11 @@ lat =1
   );
 
   display: any;
-  center: google.maps.LatLngLiteral = { lat: 14, lng: 78 };
+  center: google.maps.LatLngLiteral = { lat: +localStorage.getItem("lat"), lng: +localStorage.getItem("lng") };
   zoom = 6;
   markerOptions: google.maps.MarkerOptions = { draggable: false };
   markerPositions: google.maps.LatLngLiteral[] = [];
+
   moveMap(event: google.maps.MapMouseEvent) {
     if (event.latLng != null) this.center = event.latLng.toJSON();
   }
@@ -52,8 +56,9 @@ lat =1
   addMarker(event: google.maps.MapMouseEvent) {
     if (event.latLng != null) {
       console.log('mouse click', this.lat);
-
       this.markerPositions.push({lat:+localStorage.getItem("lat"),lng:+localStorage.getItem("lng")});
     }
+
+
   }
 }
