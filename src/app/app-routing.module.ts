@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AboutComponent } from './about/about.component';
+import { ComplaintComponent } from './complaint/complaint.component';
+import { GooglemapComponent } from './google-map/googlemap.component';
 import { AddPropertyComponent } from './property/add-property/add-property.component';
 import { PropertyDetailComponent } from './property/property-detail/property-detail.component';
 import { PropertyListComponent } from './property/property-list/property-list.component';
@@ -13,6 +16,9 @@ const routes: Routes = [
   {path:'property-detail/:id',component:PropertyDetailComponent},
   {path:'user/login',component:UserLoginComponent},
   {path:'user/register',component:UserRegisterComponent},
+  {path:"complaint",component:ComplaintComponent},
+  {path:"about",component:AboutComponent},
+  {path:"maps",component:GooglemapComponent},
   {path:'**',component:PropertyListComponent}
 ];
 
