@@ -1,0 +1,36 @@
+
+<div>
+  <div  style="border: 20px; ">
+    <h1  style="color: blue; text-align: center; ">
+      Your location is {{address}}
+
+    </h1>
+    <button  style="float:right ;" (click)="refresh()" class="btn btn-outline-dark my-3 px-4 mx-4" >Refresh Me</button>
+  </div>
+</div>
+
+<div class="px-5">
+  <google-map  height="400px"
+  width="98%"
+  [center]="center"
+  [zoom]="zoom"
+  [center]=""
+  (mapClick)="moveMap($event)"
+  (mapMousemove)="move($event)"
+  (mapClick)="addMarker($event)">
+
+  <map-marker *ngFor="let markerPosition of markerPositions"
+              [position]="markerPosition"
+              [options]="markerOptions"
+              ></map-marker>
+</google-map>
+
+</div>
+
+
+<div>Latitude: {{display?.lat}}</div>
+<div>Longitude: {{display?.lng}}</div>
+
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6FFVGq29kQZws-OzhuCYwcSdirU3tjWI&callback=initMap">
+</script>
