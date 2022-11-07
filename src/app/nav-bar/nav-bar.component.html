@@ -16,6 +16,9 @@
         <li class="nav-item">
           <a class="nav-link " routerLinkActive="active" routerLink="/add-property">List of Properties</a>
         </li>
+        <li *ngIf="loggedin()" class="nav-item mx-4 ">
+          <a class="nav-link"  routerLinkActive="active" routerLink="/wishlist">WishList</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link"  routerLinkActive="active" routerLink="/complaint"><i style='font-size:24px' class='fas mx-1'>&#xf674;</i>ComplaintBox </a>
         </li>
@@ -36,16 +39,16 @@
           <!-- <li *ngIf="loggedin()" class="nav-item">
             <a class="nav-link" (click)="onLogout()" >Logout</a>
           </li> -->
-          <li *ngIf="loggedin()" class="nav-item ">
+          <li *ngIf="loggedin()" class="nav-item mx-4 ">
             <a class="nav-link"  routerLinkActive="active" routerLink="/maps">Maps</a>
           </li>
-          <div *ngIf="loggedin()" class="dropdown " style="width:100% ;"  dropdown>
+          <div *ngIf="loggedin()" class="dropdown mx-4" style="width:100% ;"  dropdown>
 
             <a href="#" class="dropdown-toggle text-light" dropdownToggle (click)="false">
                 Welcome {{loggedinUser}}
             </a>
 
-            <div class="dropdown-menu"  *dropdownMenu>
+            <div class="dropdown-menu mx-5"  *dropdownMenu>
                 <a href="#"class="dropdown-item">
                   <i class="bi bi-speedometer2"></i> View Dashboard</a>
                 <a href="#" class="dropdown-item">

@@ -24,6 +24,7 @@ import { ComplaintComponent } from './complaint/complaint.component';
 import { ComplaintService } from './services/complaint.service';
 import{GoogleMapsModule} from "@angular/google-maps"
 import { GooglemapComponent } from './google-map/googlemap.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
 
 
 
@@ -40,7 +41,8 @@ import { GooglemapComponent } from './google-map/googlemap.component';
       UserRegisterComponent,
       AboutComponent,
       ComplaintComponent,
-      GooglemapComponent
+      GooglemapComponent,
+      WishlistComponent
    ],
   imports: [
     BrowserModule,
@@ -52,7 +54,7 @@ import { GooglemapComponent } from './google-map/googlemap.component';
     BsDropdownModule,
     TabsModule,
     ButtonsModule,
-    GoogleMapsModule
+    GoogleMapsModule,
 
   ],
   providers: [

@@ -1,4 +1,8 @@
+import { Call } from '@angular/compiler';
 import { AfterViewInit, Component, Injectable, OnInit } from '@angular/core';
+import { GoogleMap } from '@angular/google-maps';
+import { ActivatedRoute, Router } from '@angular/router';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-googlemap',
@@ -8,27 +12,39 @@ import { AfterViewInit, Component, Injectable, OnInit } from '@angular/core';
 
 
 export class GooglemapComponent implements OnInit {
-lat =1
-  lng: any;
+  lat:any
+  lng:any
+address2:any
+address=this.route.snapshot.paramMap.get("city")
+
   position= {lat: null, lng: null};
-  constructor() {}
+  constructor(private route:ActivatedRoute ,private router:Router) {
+  }
   ngOnInit(): void {
+    this.address2=this.route.snapshot.paramMap.get("city")
+
+    this.route.params.subscribe(
+      (params)=>{
+        this.address2=params['city'];
+      }
+    )
     if (!navigator.geolocation) {
       console.log('not supported');
     }
     navigator.geolocation.getCurrentPosition((pos) => {
-      // console.log(pos)
-      //  this.lat = pos.coords.latitude;
-      //this.lng =pos.coords.longitude;
-      //console.log(this.lat)
-      //console.log(this.lng)
+      console.log(pos)
+      localStorage.setItem('lat1',pos.coords.latitude.toString())
+      localStorage.setItem('lng1',pos.coords.longitude.toString())
+      console.log(this.lat)
+      console.log(this.lng)
     });
   }
 
   cordinates = new google.maps.Geocoder().geocode(
-    { address: 'delhi' },
+    { address: this.address },
     function (results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
+
         console.log('hello');
         localStorage.setItem('lat',results[0].geometry.location.toJSON().lat.toString())
         localStorage.setItem('lng',results[0].geometry.location.toJSON().lng.toString())
@@ -38,10 +54,13 @@ lat =1
   );
 
   display: any;
-  center: google.maps.LatLngLiteral = { lat: 14, lng: 78 };
+  center: google.maps.LatLngLiteral = { lat: +localStorage.getItem("lat"), lng: +localStorage.getItem("lng") };
   zoom = 6;
   markerOptions: google.maps.MarkerOptions = { draggable: false };
-  markerPositions: google.maps.LatLngLiteral[] = [];
+  markerPositions: google.maps.LatLngLiteral[] = [{lat:+localStorage.getItem("lat"),lng:+localStorage.getItem("lng")},
+  {lat:+localStorage.getItem("lat1"),lng:+localStorage.getItem("lng1")}];
+t
+
   moveMap(event: google.maps.MapMouseEvent) {
     if (event.latLng != null) this.center = event.latLng.toJSON();
   }
@@ -51,9 +70,15 @@ lat =1
   }
   addMarker(event: google.maps.MapMouseEvent) {
     if (event.latLng != null) {
-      console.log('mouse click', this.lat);
-
-      this.markerPositions.push({lat:+localStorage.getItem("lat"),lng:+localStorage.getItem("lng")});
+      //console.log('mouse click', this.lat);
+      //this.markerPositions.push({lat:+localStorage.getItem("lat"),lng:+localStorage.getItem("lng")});
     }
+  }
+
+  refresh(){
+    console.log("refresh")
+   console.log( this.router.navigate(["/maps"]));
+   console.log(this.address2)
+
   }
 }
