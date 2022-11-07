@@ -19,13 +19,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { UserRegisterComponent } from './user/user-register/user-register.component';
 import {ButtonsModule} from 'ngx-bootstrap/buttons'
-import { AboutComponent } from './about/about.component';
-import { ComplaintComponent } from './complaint/complaint.component';
-import { ComplaintService } from './services/complaint.service';
-import{GoogleMapsModule} from "@angular/google-maps"
-import { GooglemapComponent } from './google-map/googlemap.component';
-import { WishlistComponent } from './wishlist/wishlist.component';
-
 
 
 
@@ -38,10 +31,7 @@ import { WishlistComponent } from './wishlist/wishlist.component';
       AddPropertyComponent,
       PropertyDetailComponent,
       UserLoginComponent,
-      UserRegisterComponent,
-      AboutComponent,
-      ComplaintComponent,
-      GooglemapComponent
+      UserRegisterComponent
    ],
   imports: [
     BrowserModule,
@@ -52,8 +42,7 @@ import { WishlistComponent } from './wishlist/wishlist.component';
     BrowserAnimationsModule,
     BsDropdownModule,
     TabsModule,
-    ButtonsModule,
-    GoogleMapsModule
+    ButtonsModule
 
   ],
   providers: [
