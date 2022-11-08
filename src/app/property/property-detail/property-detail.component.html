@@ -1,50 +1,121 @@
-<!-- <p>property-detail works!</p>
-<p>the id is {{propertyId}}</p>
+<div class="row shadow">
+  <div class="col-sm-4 p-0">
+    <div class="card">
+      <div class="card-img-wrapper">
+        <img *ngIf="property.Image" class="card-img-top" src="../../assets/images/{{property.Image}}" alt="House" >
+        <img *ngIf="!property.Image" class="card-img-top" src="../../assets/images/house1.jpg" alt="House" >      </div>
+      <div class="card-body">
+          <h1 class="card-title">
+              {{property.Name}}
+          </h1>
+          <div>
+            <strong>
+              {{property.BHK}} BHK {{property.PType}} @ ${{property.Price}}
+            </strong>
+          </div>
+          <div>
+            <strong>in {{property.City}}</strong>
+          </div> <hr>
+          <div>
+            <strong>Build area: </strong>{{property.BuiltArea}} Sqft
+          </div>
+          <div>
+            <strong>Carpet Area: </strong>{{property.CarpetArea}} Sqft
+          </div>
+          <div>
+            <strong>Furnishing Type: </strong>{{property.FType}}
+          </div>
+      </div>
+      <div class="card-footer">
+        <div class="btn-group d-flex">
+          <button class="btn btn-primary">Like</button>
+        <button class="btn btn-success">Message</button>
+        </div>
 
-<br/><br/>
+      </div>
 
-<button class="btn btn-primary" (click)="onSelectNext()">next</button>
-<br/><br/>
-<button class="btn btn-primary" routerLink="/property-detail/1">1</button>
-<button class="btn btn-primary" routerLink="/property-detail/2">2</button>
-<button class="btn btn-primary" routerLink="/property-detail/3">3</button>
-<button class="btn btn-primary" [routerLink]="['/property-detail','4']">4</button> -->
+    </div>
 
-
- <div class="card ">
-  <div class="card-img-wrapper">
-    <img *ngIf="property.Image" class="card-img-top" src="../../assets/images/{{property.Image}}" alt="House" >
-    <img *ngIf="!property.Image" class="card-img-top" src="../../assets/images/house1.jpg" alt="House" >
-    <ul  class="list-inline text-center member-icons animate">
-      <li class="list-inline-item">
-        <button class="btn btn-outline-secondary" routerLink="/property-detail/{{property.Id}}"><i class="bi bi-pen"></i></button>
-      </li >
-      <li class="list-inline-item">
-        <button class="btn btn-outline-dark"><i class="bi bi-person-lines-fill"></i></button>
-      </li>
-      <li class="list-inline-item">
-        <button [hidden]="false"  class="btn btn-outline-danger"  routerLinkActive="active" routerLink="/maps/{{property.City}}"><i class="bi bi-geo-alt"></i></button>
-      </li>
-    </ul>
   </div>
+  <div class="col-sm-8 p-0">
+    <div class="tab-panel p-3">
+      <tabset class="member-tabset">
+        <tab heading="Overview">
+          <h1>Overview</h1>
+          <div class="row">
+              <div class="col-sm-6">
+                <div class="heading">
+                  <strong>Project Name</strong>
+                  <p>{{property.Name}}</p>
+              </div>
 
-  <div class="card-body p-1">
-    <h1 class="mb-0"> {{property.BHK}} BHK {{property.PType}} </h1>
+              <div class="heading">
+                  <strong>Floor Number</strong>
+                  <p>{{property.FloorNo}}</p>
+              </div>
 
-    in {{property.Name}}
-    <span *ngIf="property.Name">,</span>
-    {{property.City}}
+              <div class="heading">
+                  <strong>Age of Property</strong>
+                  <p>{{property.AOP}}</p>
+              </div>
 
-    <h6  class="mt-2">{{property.FType}}
-    <span *ngIf="property.FType !== 'Unfurnished'">Furnished</span> | Ready to Move</h6>
+              <div class="heading">
+                  <strong>Posession</strong>
+                  <p>{{property.Posession}}</p>
+              </div>
+              </div>
 
-    <hr class="mt-0 mb-2">
+              <div class="col-sm-6">
+                <div class="heading">
+                    <strong>Main Entrance</strong>
+                    <p>{{property.MainEntrance}}</p>
+                </div>
 
-    <h6 class="mb-0">Price: <span class>{{property.Price}} USD.</span> |
-      Area:  <span>{{property.BuiltArea}} Sq Ft </span> </h6>
+                <div class="heading">
+                    <strong>Gated Community</strong>
+                    <p>{{property.Gated}}</p>
+                </div>
+
+                <div class="heading">
+                    <strong>Security Deposit</strong>
+                    <p>{{property.Security}}</p>
+                </div>
+                <div class="heading">
+                    <strong>Maintenance</strong>
+                    <p>{{property.Maintenance}}</p>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="heading">
+                    <strong>About Property</strong>
+                    <p>{{property.Description}}</p>
+                </div>
+            </div>
+
+          </div>
+        </tab>
+        <tab heading="Address">
+          <div class="col-sm-12">
+            <h1>Address</h1>
+            <div class="heading">
+                <strong>{{property.Address}}</strong><br/>
+                <strong>{{property.Address2}}</strong><br/>
+                <strong>{{property.City}}</strong>
+            </div>
+            </div>
+        </tab>
+        <tab heading="Photos">
+
+          <ngx-gallery [options]="galleryOptions" [images]="galleryImages" class="ngx-gallery"></ngx-gallery>
+        </tab>
+        <tab heading="Contact">
+          <h1>Contact Detail</h1>
+          This should be restricted area and only registered user should be able to see seller contact details
+        </tab>
+
+      </tabset>
+
+    </div>
+
   </div>
 </div>
-
-
-
-

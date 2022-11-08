@@ -25,6 +25,9 @@ import { ComplaintService } from './services/complaint.service';
 import{GoogleMapsModule} from "@angular/google-maps"
 import { GooglemapComponent } from './google-map/googlemap.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
+import { NgxGalleryModule } from '@kolkov/ngx-gallery';
+import { FilterPipe } from './pipes/filter.pipe';
+import { SortPipe } from './pipes/sort.pipe';
 
 
 
@@ -42,7 +45,9 @@ import { WishlistComponent } from './wishlist/wishlist.component';
       AboutComponent,
       ComplaintComponent,
       GooglemapComponent,
-      WishlistComponent
+      WishlistComponent,
+      FilterPipe,
+      SortPipe
    ],
   imports: [
     BrowserModule,
@@ -55,6 +60,7 @@ import { WishlistComponent } from './wishlist/wishlist.component';
     TabsModule,
     ButtonsModule,
     GoogleMapsModule,
+    NgxGalleryModule
 
   ],
   providers: [

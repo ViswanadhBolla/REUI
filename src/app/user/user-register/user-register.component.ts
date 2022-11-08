@@ -44,10 +44,10 @@ export class UserRegisterComponent implements OnInit {
         confirmPassword: new FormControl(null, Validators.required),
         mobile: new FormControl(null, [
           Validators.required,
-          Validators.maxLength(10),
+          Validators.maxLength(10)
         ]),
       },
-      { Validators: this.passwordMatchingValidator }
+      { validators: this.passwordMatchingValidator }
     );
   }
 
