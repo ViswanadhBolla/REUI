@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
 import { Observable } from 'rxjs';
-import { IPropertyBase } from 'src/app/models/iproperty-base';
 import { IProperty } from '../models/IProperty';
 import { Property } from '../models/Property';
 
@@ -12,17 +11,33 @@ import { Property } from '../models/Property';
 export class HousingService {
 
 constructor(private httpclient:HttpClient) { }
-GetAllproperties(SellRent:number):Observable<IPropertyBase[]>{
+
+getProperty(id:number){
+
+  return this.GetAllproperties().pipe(
+    map(propertiesArray =>{
+      // throw new Error('some error');
+      return propertiesArray.find(p=> p.Id === id)
+    })
+  );
+}
+
+GetAllproperties(SellRent?:number):Observable<Property[]>{
    return this.httpclient.get('data/properties1.json').pipe(
     map(data=>{
 
-      const propertiesArray:Array<IPropertyBase>=[];
+      const propertiesArray:Array<Property>=[];
       const localProperties = JSON.parse(localStorage.getItem('newProp'));
       if(localProperties){
+
         for(const id in localProperties){
+          if(SellRent){
           if(localProperties.hasOwnProperty(id)&&localProperties[id].SellRent===SellRent){
             propertiesArray.push(localProperties[id]);
           }
+        }else{
+          propertiesArray.push(localProperties[id]);
+        }
 
         }
       }
@@ -30,15 +45,19 @@ GetAllproperties(SellRent:number):Observable<IPropertyBase[]>{
 
 
       for(const id in data){
+        if(SellRent){
         if(data.hasOwnProperty(id)&&data[id].SellRent===SellRent){
           propertiesArray.push(data[id]);
         }
+      }else{
+        propertiesArray.push(data[id]);
+      }
 
       }
       return propertiesArray
     })
   );
-  return this.httpclient.get<IProperty[]>('data/properties1.json')
+  return this.httpclient.get<Property[]>('data/properties1.json')
 }
 
 addProperty(property: Property){

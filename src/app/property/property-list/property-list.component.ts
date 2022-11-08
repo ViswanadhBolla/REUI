@@ -13,6 +13,9 @@ export class PropertyListComponent implements OnInit {
 
   SellRent=1;
   properties: Array<IPropertyBase>;
+  City='';
+  SortbyParam = '';
+  SortDirection = 'asc';
   constructor(private route:ActivatedRoute,private housingService:HousingService) { }
 
   ngOnInit() {
@@ -37,6 +40,20 @@ export class PropertyListComponent implements OnInit {
         console.log('httperror: ')
         console.log(err);
       })
+      }
+
+      onCityClear(){
+
+        this.City=''
+      }
+
+      onSortDirection(){
+        if(this.SortDirection ==='desc'){
+          this.SortDirection='asc';
+        }
+        else{
+          this.SortDirection='desc';
+        }
       }
   }
 
