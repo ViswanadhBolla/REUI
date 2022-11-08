@@ -49,3 +49,14 @@
 .animate{
   transition: all 0.3s ease-in-out;
 }
+.fav{
+position: absolute;
+float: right;
+color: red;
+}
+.fav:hover{
+  position: absolute;
+  float: right;
+  color: red;
+  font-size: xx-large;
+  }

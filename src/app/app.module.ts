@@ -2,12 +2,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {TabsModule} from 'ngx-bootstrap/tabs'
-
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { PropertyCardComponent } from './property/property-card/property-card.component';
 import { PropertyListComponent } from './property/property-list/property-list.component';
@@ -28,6 +25,7 @@ import { WishlistComponent } from './wishlist/wishlist.component';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { FilterPipe } from './pipes/filter.pipe';
 import { SortPipe } from './pipes/sort.pipe';
+import { RegisterService } from './services/Register.service';
 
 
 
@@ -64,7 +62,7 @@ import { SortPipe } from './pipes/sort.pipe';
 
   ],
   providers: [
-    HousingService,ComplaintService
+    HousingService,ComplaintService,RegisterService
   ],
   bootstrap: [AppComponent]
 })

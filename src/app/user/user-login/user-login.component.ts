@@ -19,18 +19,27 @@ export class UserLoginComponent implements OnInit {
   onLogin(loginForm: NgForm){
 
     console.log(loginForm.value);
-    const token  = this.authService.authUser(loginForm.value);
-    if(token){
-      localStorage.setItem('token',token.userName);
+ this.authService.authUser(loginForm.value).subscribe(token=>{
 
-      this.alertify.success('login Successful');
-      this.router.navigate(['/'])
+  console.log("token",token.code)
+  if(token.code === 302 ){
+    localStorage.setItem('token',token.data.userName);
 
-    }
-    else{
-      this.alertify.error('Login Unsuccessful');
+    this.alertify.success('login Successful');
+    this.router.navigate(['/'])
 
-    }
+  }
+  else{
+    this.alertify.error('Login Unsuccessful');
+
+  }
+
+
+
+
+
+
+    })
 
 
   }

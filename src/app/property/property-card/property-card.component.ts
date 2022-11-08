@@ -30,12 +30,11 @@ curreny:any ="INR"
   onSelected(data){
     console.log("data",data)
     if(data === "INR" && this.curreny ==="USD"){
-      this.property.Price = +(this.property.Price*81.98).toPrecision(2)
+      this.property.Price = +this.property.Price/81.98
       this.curreny = data
     }
     else if(data === "USD" && this.curreny ==="INR"){
-      this.property.Price = +(this.property.Price/81.98).toPrecision(2)
-
+      this.property.Price = +this.property.Price*81.98
       this.curreny = data
     }
   }
