@@ -4,6 +4,7 @@ import { AboutComponent } from './about/about.component';
 import { ComplaintComponent } from './complaint/complaint.component';
 import { GooglemapComponent } from './google-map/googlemap.component';
 import { AddPropertyComponent } from './property/add-property/add-property.component';
+import { PropertyDetailResolverService } from './property/property-detail/property-detail-resolver.service';
 import { PropertyDetailComponent } from './property/property-detail/property-detail.component';
 import { PropertyListComponent } from './property/property-list/property-list.component';
 import { UserLoginComponent } from './user/user-login/user-login.component';
@@ -14,7 +15,7 @@ const routes: Routes = [
   {path:'',component:PropertyListComponent},
   {path:'rent-property',component:PropertyListComponent},
   {path:'add-property',component:AddPropertyComponent},
-  {path:'property-detail/:id',component:PropertyDetailComponent},
+  {path:'property-detail/:id',component:PropertyDetailComponent, resolve:{'prp':PropertyDetailResolverService}},
   {path:'user/login',component:UserLoginComponent},
   {path:'user/register',component:UserRegisterComponent},
   {path:"complaint",component:ComplaintComponent},

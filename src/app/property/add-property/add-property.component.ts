@@ -240,7 +240,7 @@ mapProperty(): void {
   this.property.AOP = this.AOP.value;
   this.property.Gated = this.Gated.value;
   this.property.MainEntrance = this.MainEntrance.value;
-  this.property.Possession = this.PossessionOn.value;
+  this.property.Posession = this.PossessionOn.value;
   this.property.Description = this.Description.value;
   this.property.PostedOn = new Date().toString();
 }
