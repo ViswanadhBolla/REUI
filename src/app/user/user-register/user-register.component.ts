@@ -31,7 +31,6 @@ export class UserRegisterComponent implements OnInit {
     // }, this.passwordMatchingValidator);
     this.createRegistrationForm();
   }
-
   createRegistrationForm() {
     this.registrationForm = this.fb.group(
       {

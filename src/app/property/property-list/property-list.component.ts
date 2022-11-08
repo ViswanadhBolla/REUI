@@ -12,7 +12,7 @@ import { IPropertyBase } from 'src/app/models/iproperty-base';
 export class PropertyListComponent implements OnInit {
 
   SellRent=1;
-  properties: Array<IPropertyBase>;
+  properties: Array<any>;
   constructor(private route:ActivatedRoute,private housingService:HousingService) { }
 
   ngOnInit() {

@@ -1,11 +1,14 @@
-<div class="container my-5 " style="width: 40%;">
+<div class="pt-1">
+<h1 class="py-1" style="text-align:center;"><i style='font-size:24px' class='fas mx-1'>&#xf674;</i>Complaint Box</h1>
+</div>
+
+<div class="container my-2 " style="width: 40%;">
   <form [formGroup]="complaintform"  (ngSubmit)="onSubmit()" >
 
     <label for="fname">First Name</label>
-    <input type="text" id="fname" name="firstname"  class="form-control" formControlName="firstname"  placeholder="Your name..">
-
+    <input type="text" id="fname" name="firstname" required class="form-control" formControlName="firstname"  placeholder="Your name..">
     <label for="lname">Email</label>
-    <input type="text" id="lname" name="email"  class="form-control" formControlName="email" placeholder="Your Email..">
+    <input type="text" id="lname" name="email"  required class="form-control" formControlName="email" placeholder="Your Email..">
 
     <label for="country">complaintRange</label>
     <select id="country" formControlName="range" name="range">
@@ -18,9 +21,9 @@
     </select>
 
     <label for="subject">Subject</label>
-    <textarea id="subject" name="subject"  class="form-control" formControlName="subject" placeholder="Write something.." style="height:200px"></textarea>
+    <textarea id="subject" name="subject" required  class="form-control" formControlName="subject" placeholder="Write something.." style="height:200px"></textarea>
 
-    <input type="submit" value="Send Mail">
+    <input  [disabled]="!complaintform.valid" type="submit"  value="Send Mail">
 
   </form>
 </div>

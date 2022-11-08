@@ -13,6 +13,7 @@ curreny:any ="USD"
   status:any
   @Input() property:IPropertyBase;
   @Input() hideIcons : boolean;
+
   constructor(private wishcontent:WishlistService) {
     if(!localStorage.getItem("token")){
         this.status =true
@@ -23,6 +24,7 @@ curreny:any ="USD"
    }
 
   ngOnInit() {
+  console.log(this.property.City)
   }
 
   onSelected(data){

@@ -14,13 +14,21 @@ import { map } from 'rxjs';
 export class GooglemapComponent implements OnInit {
   lat:any
   lng:any
+  myDate:any
+  count:any =0
 address2:any
 address=this.route.snapshot.paramMap.get("city")
 
   position= {lat: null, lng: null};
   constructor(private route:ActivatedRoute ,private router:Router) {
+    this.refresh()
+
   }
   ngOnInit(): void {
+
+
+
+   this.center= { lat: +localStorage.getItem("lat"), lng: +localStorage.getItem("lng") };
     this.address2=this.route.snapshot.paramMap.get("city")
 
     this.route.params.subscribe(
@@ -35,8 +43,6 @@ address=this.route.snapshot.paramMap.get("city")
       console.log(pos)
       localStorage.setItem('lat1',pos.coords.latitude.toString())
       localStorage.setItem('lng1',pos.coords.longitude.toString())
-      console.log(this.lat)
-      console.log(this.lng)
     });
   }
 
@@ -59,7 +65,7 @@ address=this.route.snapshot.paramMap.get("city")
   markerOptions: google.maps.MarkerOptions = { draggable: false };
   markerPositions: google.maps.LatLngLiteral[] = [{lat:+localStorage.getItem("lat"),lng:+localStorage.getItem("lng")},
   {lat:+localStorage.getItem("lat1"),lng:+localStorage.getItem("lng1")}];
-t
+
 
   moveMap(event: google.maps.MapMouseEvent) {
     if (event.latLng != null) this.center = event.latLng.toJSON();
@@ -76,9 +82,19 @@ t
   }
 
   refresh(){
+let timerId=    setInterval(() => {
+      //replaced function() by ()=>
+      this.myDate= new Date();
+      console.log(this.myDate);
+      this.router.navigateByUrl('/maps', {skipLocationChange: false}).then(() => {
+      //  console.log( this.router.navigate(["/maps"]));
+    });
+    },1000);
     console.log("refresh")
-   console.log( this.router.navigate(["/maps"]));
-   console.log(this.address2)
 
+   console.log(this.address2)
+   setTimeout(() => { clearInterval(timerId); 'stop' }, 1000);
   }
+
+
 }
