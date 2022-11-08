@@ -90,12 +90,7 @@ export class AddPropertyComponent implements OnInit {
     })
   }
 
-  //----------------------------
-  //Getter Methods
-  //--------------------------
 
-
- // #region groups
   get BasicInfo(){
     return this.addPropertyForm.controls['BasicInfo'] as FormGroup
   }
