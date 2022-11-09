@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map, Observable } from 'rxjs';
 import { User } from '../models/user';
 
 @Injectable({
@@ -6,7 +8,7 @@ import { User } from '../models/user';
 })
 export class UserService {
 
-  constructor() { }
+  constructor(private httpClient:HttpClient) { }
   addUser(user:User){
     let users = [];
     if(localStorage.getItem('Users')){
@@ -18,5 +20,20 @@ export class UserService {
       users=[user];
     }
     localStorage.setItem('Users',JSON.stringify(users))
+  }
+
+  GetAllUsers():Observable<User[]>{
+
+    return this.httpClient.get<User[]>('/data/Users.json')
+
+
+  }
+
+  GetUserByID(id:number){
+    return this.GetAllUsers().pipe(
+      map(usersArray=>{
+        return usersArray.find(p=>p.id===id)
+      })
+    )
   }
 }

@@ -45,13 +45,13 @@
           <div *ngIf="loggedin()" class="dropdown mx-4" style="width:100% ;"  dropdown>
 
             <a href="#" class="dropdown-toggle text-light" dropdownToggle (click)="false">
-                Welcome {{loggedinUser}}
+                Welcome {{loggedinUserName}}
             </a>
 
             <div class="dropdown-menu mx-5"  *dropdownMenu>
                 <a href="#"class="dropdown-item">
                   <i class="bi bi-speedometer2"></i> View Dashboard</a>
-                <a href="#" class="dropdown-item">
+                <a routerLink="/user/profile/{{loggedinUserID}}"class="dropdown-item">
                   <i class="bi bi-person-circle"></i> My Profile</a>
                 <a href="#" class="dropdown-item">
                   <i class="bi bi-key"></i> Change Password</a>

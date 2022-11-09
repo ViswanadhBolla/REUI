@@ -18,6 +18,7 @@ export class UserLoginComponent implements OnInit {
 
   onLogin(loginForm: NgForm){
     console.log(loginForm.value);
+
  this.authService.authUser(loginForm.value).subscribe(token=>{
 
   console.log("token",token.code)
@@ -34,6 +35,7 @@ export class UserLoginComponent implements OnInit {
     this.alertify.error('Login Unsuccessful');
 
   }
+
 
 
 
