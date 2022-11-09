@@ -9,7 +9,7 @@ import { UserService } from '../services/user.service';
 })
 export class NavBarComponent implements OnInit {
 
-  loggedinUserID: number = null;
+  loggedinUserID: string = null;
   loggedinUserName: string = null;
   token:any;
   user :User;
@@ -19,9 +19,11 @@ export class NavBarComponent implements OnInit {
   }
 
   loggedin(){
-    this.token = JSON.parse(localStorage.getItem('token'));
-    this.loggedinUserID=this.token[0]
-    this.loggedinUserName=this.token[1]
+    // this.token = JSON.parse(localStorage.getItem('token'));
+    // this.loggedinUserID=this.token[0]
+    // this.loggedinUserName=this.token[1]
+    this.loggedinUserID=localStorage.getItem('tokenId')
+    this.loggedinUserName=localStorage.getItem('token')
 
     return this.loggedinUserID;
   }
