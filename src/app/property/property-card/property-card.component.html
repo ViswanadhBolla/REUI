@@ -8,7 +8,7 @@
             <button class="btn btn-outline-secondary" routerLink="/property-detail/{{property.Id}}"><i class="bi bi-pen"></i></button>
           </li >
           <li class="list-inline-item">
-            <button class="btn btn-outline-dark"  (click)="Wishdata()" routerLink="/wishlist"><i class="bi bi-person-lines-fill"></i></button>
+            <button class="btn btn-outline-dark"  ><i class="bi bi-person-lines-fill"></i></button>
           </li>
           <li class="list-inline-item">
             <button [hidden]="status"  class="btn btn-outline-danger"  routerLinkActive="active" routerLink="/maps/{{property.City}}"><i class="bi bi-geo-alt"></i></button>
@@ -17,7 +17,7 @@
       </div>
 
       <div class="card-body p-1">
-        <h1 class="mb-0"> {{property.BHK}} BHK {{property.PType}} </h1>
+        <h1 class="mb-0"> {{property.BHK}} BHK {{property.PType}}  <button (click)="Wishdata()" routerLink="/wishlist" class="btn fav" ><i class="bi bi-heart"></i></button></h1>
 
         in {{property.Name}}
         <span *ngIf="property.Name">,</span>

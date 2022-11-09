@@ -11,14 +11,15 @@
     <input type="text" id="lname" name="email"  required class="form-control" formControlName="email" placeholder="Your Email..">
 
     <label for="country">complaintRange</label>
-    <select id="country" formControlName="range" name="range">
-      <option >High</option>
+    <select id="country" name="range">
+      <option selected="selected"  value="">--Please choose an option--</option>
+      <option value="high">High</option>
       <option >Medium</option>
       <option  >low</option>
-      <option hidden selected="selected">
-        Range
-        </option>
+
     </select>
+
+
 
     <label for="subject">Subject</label>
     <textarea id="subject" name="subject" required  class="form-control" formControlName="subject" placeholder="Write something.." style="height:200px"></textarea>
