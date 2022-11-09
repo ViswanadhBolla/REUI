@@ -18,7 +18,8 @@ export class NavBarComponent implements OnInit {
     return this.loggedinUser;
   }
   onLogout(){
-    localStorage.removeItem('token')
+    localStorage.removeItem('token');
+    localStorage.removeItem('tokenId');
   }
 
 }
