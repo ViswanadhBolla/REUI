@@ -6,3 +6,9 @@ export interface User {
     mobile?: number;
     Image?:string
 }
+export interface login {
+  userName: string;
+  email?: string;
+  password: string;
+  mobile?: number;
+}
