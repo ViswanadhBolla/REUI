@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertifyService } from 'src/app/services/alertify.service';
 import { AuthService } from 'src/app/services/auth.service';
-
+import jwt_decode from 'jwt-decode'
 @Component({
   selector: 'app-user-login',
   templateUrl: './user-login.component.html',
@@ -17,13 +17,13 @@ export class UserLoginComponent implements OnInit {
   }
 
   onLogin(loginForm: NgForm){
-
     console.log(loginForm.value);
  this.authService.authUser(loginForm.value).subscribe(token=>{
 
   console.log("token",token.code)
   if(token.code === 302 ){
-    localStorage.setItem('token',token.data);
+   console.log("jwt",jwt_decode(token.data))
+    localStorage.setItem('token',jwt_decode(token.data)["Name"]);
 
     this.alertify.success('login Successful');
     this.router.navigate(['/'])
