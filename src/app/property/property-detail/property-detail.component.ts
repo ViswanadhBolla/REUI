@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions } from '@kolkov/ngx-gallery';
-import { IPropertyBase } from 'src/app/models/iproperty-base';
 import { Property } from 'src/app/models/Property';
 import { HousingService } from 'src/app/services/housing.service';
 

@@ -44,21 +44,22 @@ address=this.route.snapshot.paramMap.get("city")
       localStorage.setItem('lat1',pos.coords.latitude.toString())
       localStorage.setItem('lng1',pos.coords.longitude.toString())
     });
+
   }
 
   cordinates = new google.maps.Geocoder().geocode(
     { address: this.address },
     function (results, status) {
-      if (status == google.maps.GeocoderStatus.OK) {
-
+      if (status == google.maps.GeocoderStatus.OK)
+      {
         console.log('hello');
-        localStorage.setItem('lat',results[0].geometry.location.toJSON().lat.toString())
-        localStorage.setItem('lng',results[0].geometry.location.toJSON().lng.toString())
+        localStorage.setItem('lat',results[0].geometry.location.toJSON().lat.toString());
+        localStorage.setItem('lng',results[0].geometry.location.toJSON().lng.toString());
         console.log(typeof(results[0].geometry.location.toJSON().lat));
       }
     }
   );
-
+ 
   display: any;
   center: google.maps.LatLngLiteral = { lat: +localStorage.getItem("lat"), lng: +localStorage.getItem("lng") };
   zoom = 6;

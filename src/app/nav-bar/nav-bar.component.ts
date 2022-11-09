@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../models/user';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -7,18 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
 
-  loggedinUser: string;
+  loggedinUserID: number = null;
+  loggedinUserName: string = null;
+  token:any;
+  user :User;
   constructor() { }
 
   ngOnInit() {
   }
 
   loggedin(){
-    this.loggedinUser= localStorage.getItem('token');
-    return this.loggedinUser;
+    this.token = JSON.parse(localStorage.getItem('token'));
+    this.loggedinUserID=this.token[0]
+    this.loggedinUserName=this.token[1]
+
+    return this.loggedinUserID;
   }
   onLogout(){
-    localStorage.removeItem('token')
+    localStorage.removeItem('token');
   }
 
 }

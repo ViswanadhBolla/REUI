@@ -57,6 +57,7 @@ export class UserRegisterComponent implements OnInit {
 
   userData():User{
     return this.user={
+      id:null,
       userName: this.userName.value,
       email: this.email.value,
       password: this.password.value,
