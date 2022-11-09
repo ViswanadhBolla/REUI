@@ -23,7 +23,7 @@ export class UserLoginComponent implements OnInit {
 
   console.log("token",token.code)
   if(token.code === 302 ){
-    localStorage.setItem('token',token.data.userName);
+    localStorage.setItem('token',token.data);
 
     this.alertify.success('login Successful');
     this.router.navigate(['/'])

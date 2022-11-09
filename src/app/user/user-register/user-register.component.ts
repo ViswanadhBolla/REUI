@@ -94,7 +94,9 @@ export class UserRegisterComponent implements OnInit {
       this.userService.addUser(this.userData());
     this.Register.RegisterUser(this.registrationForm.value).subscribe(data=>{
       console.log(data)
-    }, err=>{console.log(err)})
+    }, err=>{
+      console.log("Error:",err)
+    })
     //  this.registrationForm.reset();
       this.userSubmitted=false;
       this.alertify.success('Congrats,you are successfully registered.')
