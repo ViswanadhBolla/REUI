@@ -28,6 +28,8 @@ import { WishlistComponent } from './wishlist/wishlist.component';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { FilterPipe } from './pipes/filter.pipe';
 import { SortPipe } from './pipes/sort.pipe';
+import { CommonModule } from '@angular/common';
+import { UserProfileComponent } from './user/user-profile/user-profile.component';
 
 
 
@@ -47,7 +49,8 @@ import { SortPipe } from './pipes/sort.pipe';
       GooglemapComponent,
       WishlistComponent,
       FilterPipe,
-      SortPipe
+      SortPipe,
+      UserProfileComponent
    ],
   imports: [
     BrowserModule,

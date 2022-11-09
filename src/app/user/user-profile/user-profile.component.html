@@ -1,0 +1,28 @@
+  <div class="row details" >
+    <div class="col-sm-4">
+      <h1>profile picture</h1>
+      <div class="card">
+        <img *ngIf="user.Image" class="card-img-top" src="../../assets/images/{{user.Image}}" alt="user" >
+        <img *ngIf="!user.Image" class="card-img-top" src="../../assets/images/user-icon.png" alt="user" >
+      </div>
+    </div>
+    <div class="col-sm-8 px-5">
+      <h1>Profile details</h1>
+      <div class="card">
+        <div>
+          <strong>ID : </strong>{{user.id}}
+        </div>
+        <div>
+          <strong>Name : </strong>{{user.userName}}
+        </div>
+        <div>
+          <strong>E-mail : </strong>{{user.email}}
+        </div>
+        <div>
+          <strong>Phone : </strong>{{user.mobile}}
+        </div>
+        <div>
+      </div>
+
+    </div>
+  </div>

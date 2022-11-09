@@ -21,7 +21,7 @@ export class UserLoginComponent implements OnInit {
     console.log(loginForm.value);
     const token  = this.authService.authUser(loginForm.value);
     if(token){
-      localStorage.setItem('token',token.userName);
+      localStorage.setItem('token',JSON.stringify([token.id,token.userName]));
 
       this.alertify.success('login Successful');
       this.router.navigate(['/'])
