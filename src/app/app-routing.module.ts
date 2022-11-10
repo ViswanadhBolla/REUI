@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { ComplaintComponent } from './complaint/complaint.component';
+import { Error404Component } from './error404/error404.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { GooglemapComponent } from './google-map/googlemap.component';
 import { AddPropertyComponent } from './property/add-property/add-property.component';
 import { PropertyDetailResolverService } from './property/property-detail/property-detail-resolver.service';
@@ -26,7 +28,9 @@ const routes: Routes = [
   {path:"maps",component:GooglemapComponent},
   {path:"wishlist",component:WishlistComponent},
   {path:"user/profile/:id",component:UserProfileComponent, resolve:{'usr':UserProfileResolverService}},
-  {path:'**',component:PropertyListComponent}
+  {path:"forgot-password",component:ForgotPasswordComponent},
+  {path:'**',component:Error404Component},
+  
 ];
 
 @NgModule({

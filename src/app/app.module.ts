@@ -30,6 +30,8 @@ import { CommonModule } from '@angular/common';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 
 import { RegisterService } from './services/Register.service';
+import { Error404Component } from './error404/error404.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
 
@@ -51,7 +53,9 @@ import { RegisterService } from './services/Register.service';
       WishlistComponent,
       FilterPipe,
       SortPipe,
-      UserProfileComponent
+      UserProfileComponent,
+      Error404Component,
+      ForgotPasswordComponent
    ],
   imports: [
     BrowserModule,
