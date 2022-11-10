@@ -4,7 +4,7 @@ export interface User {
     email?: string;
     password: string;
     mobile?: number;
-    Image?:string
+    photo?:string
 }
 export interface login {
   userName: string;

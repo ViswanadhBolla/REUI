@@ -1,5 +1,6 @@
 import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { IPropertyBase } from 'src/app/models/iproperty-base';
 import { WishlistService } from 'src/app/services/wishlist.service';
 
@@ -14,7 +15,8 @@ curreny:any ="INR"
   @Input() property:IPropertyBase;
   @Input() hideIcons : boolean;
 
-  constructor(private wishcontent:WishlistService) {
+
+  constructor(private wishcontent:WishlistService,private route:ActivatedRoute) {
     if(!localStorage.getItem("token")){
         this.status =true
     }
@@ -24,17 +26,17 @@ curreny:any ="INR"
    }
 
   ngOnInit() {
-  console.log(this.property.City)
+  console.log(this.property.city)
   }
 
   onSelected(data){
     console.log("data",data)
     if(data === "INR" && this.curreny ==="USD"){
-      this.property.Price = +(this.property.Price*81.98).toPrecision(2)
+      this.property.price = +(this.property.price*81.98).toPrecision(2)
       this.curreny = data
     }
     else if(data === "USD" && this.curreny ==="INR"){
-      this.property.Price = +(this.property.Price/81.98).toPrecision(2)
+      this.property.price = +(this.property.price/81.98).toPrecision(2)
 
       this.curreny = data
     }

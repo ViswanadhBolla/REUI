@@ -1,29 +1,29 @@
 [{
-  "Id":1,
-  "SellRent":1,
-  "Name":"Birla House",
-  "PType":"House",
-  "Price":1200,
-  "Image":"house1"
+  "id":1,
+  "sellRent":1,
+  "name":"Birla House",
+  "propertyType":"House",
+  "price":1200,
+  "photo":"house1"
 
 
 },
 {
-  "Id":2,
-  "SellRent":2,
-  "Name":"Tata House",
-  "PType":"House",
-  "Price":1300,
-  "Image":"house2"
+  "id":2,
+  "sellRent":2,
+  "name":"Tata House",
+  "propertyType":"House",
+  "price":1300,
+  "photo":"house2"
 
 },
 {
-  "Id":3,
-  "SellRent":1,
-  "Name":"Santo House",
-  "PType":"House",
-  "Price":1400,
-  "Image":"house3"
+  "id":3,
+  "sellRent":1,
+  "name":"Santo House",
+  "propertyType":"House",
+  "price":1400,
+  "photo":"house3"
 
 }
 

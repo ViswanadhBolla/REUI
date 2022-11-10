@@ -7,14 +7,15 @@ import { HousingService } from 'src/app/services/housing.service';
 @Injectable({
   providedIn: 'root'
 })
-export class PropertyDetailResolverService implements Resolve<Property>{
+export class PropertyDetailResolverService implements Resolve<any>{
 
 constructor(private housingService: HousingService, private router:Router) { }
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Property | Observable<Property> | Promise<Property> {
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Property | Observable<any> | Promise<any> {
     const propId = route.params['id']
+
     return this.housingService.getProperty(+propId).pipe(
       catchError(error=>{
-        this.router.navigate(['/'])
+        console.log(error)
         return of(null)
       })
     )

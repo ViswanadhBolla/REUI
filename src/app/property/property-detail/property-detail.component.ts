@@ -26,25 +26,12 @@ export class PropertyDetailComponent implements OnInit {
     this.propertyId = +this.route.snapshot.params['id'];
     this.route.data.subscribe(
       (data:Property) => {
-        this.property = data['prp']
-        //console.log(this.property);
+        console.log(data)
+        this.property = data['prp']['data']
+        console.log(this.property);
 
       }
     )
-
-    // this.route.params.subscribe(
-    //   (params)=>{
-    //     this.propertyId=+params['id'];
-    //     this.housingService.getProperty(this.propertyId).subscribe(
-    //       (data:Property)=>{
-    //         this.property=data;
-    //         console.log(data);
-
-    //       },
-    //       error => this.router.navigate(['/'])
-    //     )
-    //   }
-    // )
 
     this.galleryOptions = [
       {
