@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
 import { Observable } from 'rxjs';
@@ -26,6 +26,13 @@ GetAllproperties(sellRent?:number){
 }
 
 addProperty(property: Property){
+
+
+  const httpOptions = {
+    headers: new HttpHeaders({
+        Authorization: 'Bearer '+ localStorage.getItem('token')
+    })
+};
   // let newProp =[property];
 
   // if (localStorage.getItem('newProp')){
@@ -35,7 +42,7 @@ addProperty(property: Property){
   // localStorage.setItem('newProp', JSON.stringify(newProp));
   console.log(property)
 
-  return this.httpclient.post('https://localhost:7263/api/Property/add',property)
+  return this.httpclient.post('https://localhost:7263/api/Property/add',property,httpOptions)
 }
 
 newPropID(){
