@@ -268,7 +268,7 @@ mapProperty(): void {
   this.property.address = this.address.value;
   this.property.address2 = this.LandMark.value;
   this.property.readyToMove = Boolean(+this.readyToMove.value);
-  this.property.age = this.age.value;
+  this.property.age = +this.age.value;
   this.property.gated = Boolean(+this.gated.value);
   this.property.mainEntrance = this.mainEntrance.value;
   this.property.estPossessionOn = new Date(this.PossessionOn.value);
