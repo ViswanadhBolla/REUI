@@ -13,7 +13,7 @@
           <a class="nav-link" routerLinkActive="active" routerLink="/rent-property">Rent</a>
         </li>
 
-        <li class="nav-item">
+        <li *ngIf="loggedin()" class="nav-item">
           <a class="nav-link " routerLinkActive="active" routerLink="/add-property">Add Properties</a>
         </li>
         <li *ngIf="loggedin()" class="nav-item mx-4 ">
@@ -49,11 +49,11 @@
             </a>
 
             <div class="dropdown-menu mx-5"  *dropdownMenu>
-                <a href="#"class="dropdown-item">
+                <a routerLink="/"class=" dropdown-item">
                   <i class="bi bi-speedometer2"></i> View Dashboard</a>
                 <a routerLink="/user/profile/{{loggedinUserID}}"class="dropdown-item">
                   <i class="bi bi-person-circle"></i> My Profile</a>
-                <a href="#" class="dropdown-item">
+                <a routerLink="/" class="dropdown-item">
                   <i class="bi bi-key"></i> Change Password</a>
                 <a (click)='onLogout()' class="dropdown-item">
                   <i class="bi bi-box-arrow-right"></i> Logout</a>

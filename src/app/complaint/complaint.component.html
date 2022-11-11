@@ -5,26 +5,44 @@
 <div class="container my-2 " style="width: 40%;">
   <form [formGroup]="complaintform"  (ngSubmit)="onSubmit()" >
 
-    <label for="fname">First Name</label>
-    <input type="text" id="fname" name="firstname" required class="form-control" formControlName="firstname"  placeholder="Your name..">
-    <label for="lname">Email</label>
-    <input type="text" id="lname" name="email"  required class="form-control" formControlName="email" placeholder="Your Email..">
+    <div>
+      <label for="fname">First Name</label>
+      <input type="text" id="fname" required class="form-control" formControlName="firstname"  placeholder="Your name..">
+      <span *ngIf="!complaintform.get('firstname').valid && complaintform.get('firstname').touched" class="error-block">
+        Please provide name
+      </span>
+
+    </div>
+
+    <div>
+      <label for="lname">Email</label>
+      <input type="text" id="lname"  required class="form-control" formControlName="email" placeholder="Your Email..">
+      <span *ngIf="!complaintform.get('email').valid && complaintform.get('email').touched" class="error-block">
+        Please provide proper email
+      </span>
+    </div>
 
     <label for="country">complaintRange</label>
-    <select id="country" name="range">
+    <select id="country" formControlName="range">
       <option selected="selected"  value="">--Please choose an option--</option>
       <option value="high">High</option>
-      <option >Medium</option>
-      <option  >low</option>
+      <option value="medium">Medium</option>
+      <option  value="low" >low</option>
 
     </select>
 
 
-
-    <label for="subject">Subject</label>
+    <div>
+      <label for="subject">Subject</label>
     <textarea id="subject" name="subject" required  class="form-control" formControlName="subject" placeholder="Write something.." style="height:200px"></textarea>
+    <span *ngIf="!complaintform.get('subject').valid && complaintform.get('subject').touched" class="error-block">
+      Please enter message
+    </span>
+    </div>
 
-    <input  [disabled]="!complaintform.valid" type="submit"  value="Send Mail">
+    <button [disabled]="!complaintform.valid" type="submit" class="btn btn-success">send mail</button>
 
   </form>
+  <!-- FormValues:{{complaintform.value|json}}
+        FormStatus:{{complaintform.valid}} -->
 </div>

@@ -5,10 +5,12 @@ import {
   Validators,
   FormBuilder,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { AlertifyService } from 'src/app/services/alertify.service';
 import { RegisterService } from 'src/app/services/Register.service';
 import { UserService } from 'src/app/services/user.service';
+import { ReactiveFormValidators } from 'src/app/validators/FormValidators.validator';
 
 
 @Component({
@@ -20,7 +22,8 @@ export class UserRegisterComponent implements OnInit {
   registrationForm: FormGroup;
   userSubmitted:boolean;
   user: User ;
-  constructor(private fb: FormBuilder,
+  constructor(private router:Router,
+     private fb: FormBuilder,
     private userService: UserService,
     private alertify:AlertifyService,
     private Register:RegisterService) {}
@@ -38,7 +41,7 @@ export class UserRegisterComponent implements OnInit {
   createRegistrationForm() {
     this.registrationForm = this.fb.group(
       {
-        userName: new FormControl(null, [Validators.required]),
+        userName: new FormControl(null, [Validators.required,Validators.minLength(8)]),
         email: new FormControl(null, [Validators.required, , Validators.email]),
         password: new FormControl(null, [
           Validators.required,
@@ -47,7 +50,8 @@ export class UserRegisterComponent implements OnInit {
         confirmPassword: new FormControl(null, Validators.required),
         mobile: new FormControl(null, [
           Validators.required,
-          Validators.maxLength(10)
+          // Validators.maxLength(10),
+          ReactiveFormValidators.mobileNumberValidation
         ]),
       },
       { validators: this.passwordMatchingValidator }
@@ -101,6 +105,8 @@ export class UserRegisterComponent implements OnInit {
     //  this.registrationForm.reset();
       this.userSubmitted=false;
       this.alertify.success('Congrats,you are successfully registered.')
+      this.router.navigate(['/user/login'])
+
     }
     else{
       this.alertify.error('Kindly provide proper details')

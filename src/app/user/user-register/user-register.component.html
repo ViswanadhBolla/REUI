@@ -9,9 +9,10 @@
         <div class="form-group col-12">
             <label for="name" class="form-label">Name</label>
             <input type="text" class="form-control" formControlName="userName">
-            <span *ngIf="!userName.valid && (userName.touched || userSubmitted)" class="error-block">
-              Please provide name
-            </span>
+            <div *ngIf="userName.invalid && (userName.touched || userSubmitted)" class="error-block">
+              Please provide name (minimum 8 characters)
+            </div>
+            
         </div>
 
         <div class="form-group col-12">
@@ -44,10 +45,10 @@
 
         <div class="form-group col-12">
           <label for="mobile" class="form-label">Mobile</label>
-          <input type="text" class="form-control" formControlName="mobile">
+          <input type="number" class="form-control" formControlName="mobile">
           <span *ngIf="!mobile.valid && (mobile.touched || userSubmitted)" class="error-block">
             <span *ngIf="mobile.errors['required']">Please provide phone number</span>
-            <span *ngIf="mobile.errors['maxlength']">mobile number should be lesser than 11 characters</span>
+            <span *ngIf="mobile.errors['numberValid'] && !mobile.errors['required']">Enter a valid number</span>
           </span>
         </div>
 
