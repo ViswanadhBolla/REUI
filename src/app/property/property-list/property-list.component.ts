@@ -11,9 +11,9 @@ import { IPropertyBase } from 'src/app/models/iproperty-base';
 })
 export class PropertyListComponent implements OnInit {
 
-  SellRent=1;
+  sellRent=1;
   properties: Array<IPropertyBase>;
-  City='';
+  city='';
   SortbyParam = '';
   SortDirection = 'asc';
   constructor(private route:ActivatedRoute,private housingService:HousingService) { }
@@ -23,16 +23,17 @@ export class PropertyListComponent implements OnInit {
 
       //console.log(this.route.snapshot.url.toString());
 
-      this.SellRent=2;
+      this.sellRent=2;
     }
-    this.housingService.GetAllproperties(this.SellRent).subscribe(data=>{
-      this.properties =data
+
+    this.housingService.GetAllproperties(this.sellRent).subscribe(data=>{
+      this.properties =data['data']
 
       // const newProperty = JSON.parse(localStorage.getItem('newProp'));
-      // if(newProperty.SellRent===this.SellRent){
+      // if(newProperty.sellRent===this.sellRent){
       //   this.properties = [newProperty, ...this.properties]
       // }
-      console.log(data);
+      // console.log(data);
 
 
       },
@@ -44,7 +45,7 @@ export class PropertyListComponent implements OnInit {
 
       onCityClear(){
 
-        this.City=''
+        this.city=''
       }
 
       onSortDirection(){

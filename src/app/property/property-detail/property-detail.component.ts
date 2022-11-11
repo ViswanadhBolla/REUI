@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions } from '@kolkov/ngx-gallery';
 import { Property } from 'src/app/models/Property';
@@ -14,37 +15,28 @@ export class PropertyDetailComponent implements OnInit {
 
 
   constructor(private route:ActivatedRoute, private router:Router,
-    private housingService : HousingService) { }
+    private housingService : HousingService, private sanitizer: DomSanitizer) { }
 
     public propertyId:number;
     property= new Property();
     galleryOptions: NgxGalleryOptions[];
     galleryImages: NgxGalleryImage[];
+    // url="http://localhost:4200/user/profile/"+this.property.postedBy;
+    // urlSafe:SafeResourceUrl;
 
 
   ngOnInit(): void {
     this.propertyId = +this.route.snapshot.params['id'];
     this.route.data.subscribe(
       (data:Property) => {
-        this.property = data['prp']
-        //console.log(this.property);
+        // console.log(data)
+        this.property = data['prp']['data']
+        // console.log(this.property);
 
       }
     )
 
-    // this.route.params.subscribe(
-    //   (params)=>{
-    //     this.propertyId=+params['id'];
-    //     this.housingService.getProperty(this.propertyId).subscribe(
-    //       (data:Property)=>{
-    //         this.property=data;
-    //         console.log(data);
-
-    //       },
-    //       error => this.router.navigate(['/'])
-    //     )
-    //   }
-    // )
+    // this.urlSafe=this.sanitizer.bypassSecurityTrustResourceUrl(this.url)
 
     this.galleryOptions = [
       {

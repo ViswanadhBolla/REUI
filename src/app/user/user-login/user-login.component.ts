@@ -21,9 +21,9 @@ export class UserLoginComponent implements OnInit {
 
  this.authService.authUser(loginForm.value).subscribe(token=>{
 
-  console.log("token",token.code)
+  // console.log("token",token.code)
   if(token.code === 302 ){
-   console.log("jwt",jwt_decode(token.data))
+  //  console.log("jwt",jwt_decode(token.data))
     localStorage.setItem('token',jwt_decode(token.data)["Name"]);
     localStorage.setItem('tokenId',jwt_decode(token.data)["Id"]);
 
