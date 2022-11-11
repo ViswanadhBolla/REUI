@@ -2,8 +2,8 @@
     <div class="col-sm-4">
       <h1>profile picture</h1>
       <div class="card">
-        <img *ngIf="user.Image" class="card-img-top" src="../../assets/images/{{user.Image}}" alt="user" >
-        <img *ngIf="!user.Image" class="card-img-top" src="../../assets/images/user-icon.png" alt="user" >
+        <img *ngIf="user.photo" class="card-img-top" src="../../assets/images/{{user.photo}}" alt="user" >
+        <img *ngIf="!user.photo" class="card-img-top" src="../../assets/images/user-icon.png" alt="user" >
       </div>
     </div>
     <div class="col-sm-8 px-5">

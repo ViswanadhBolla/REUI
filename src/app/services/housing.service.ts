@@ -14,60 +14,28 @@ constructor(private httpclient:HttpClient) { }
 
 getProperty(id:number){
 
-  return this.GetAllproperties().pipe(
-    map(propertiesArray =>{
-      // throw new Error('some error');
-      return propertiesArray.find(p=> p.Id === id)
-    })
-  );
+
+  return this.httpclient.get('https://localhost:7263/api/Property/detail/'+id)
 }
 
-GetAllproperties(SellRent?:number):Observable<Property[]>{
-   return this.httpclient.get('data/properties1.json').pipe(
-    map(data=>{
+GetAllproperties(sellRent?:number){
 
-      const propertiesArray:Array<Property>=[];
-      const localProperties = JSON.parse(localStorage.getItem('newProp'));
-      if(localProperties){
-
-        for(const id in localProperties){
-          if(SellRent){
-          if(localProperties.hasOwnProperty(id)&&localProperties[id].SellRent===SellRent){
-            propertiesArray.push(localProperties[id]);
-          }
-        }else{
-          propertiesArray.push(localProperties[id]);
-        }
-
-        }
-      }
+   return this.httpclient.get('https://localhost:7263/api/Property/list/'+sellRent)
 
 
-
-      for(const id in data){
-        if(SellRent){
-        if(data.hasOwnProperty(id)&&data[id].SellRent===SellRent){
-          propertiesArray.push(data[id]);
-        }
-      }else{
-        propertiesArray.push(data[id]);
-      }
-
-      }
-      return propertiesArray
-    })
-  );
-  return this.httpclient.get<Property[]>('data/properties1.json')
 }
 
 addProperty(property: Property){
-  let newProp =[property];
+  // let newProp =[property];
 
-  if (localStorage.getItem('newProp')){
-    newProp=[property,
-    ...JSON.parse(localStorage.getItem('newProp'))];
-  }
-  localStorage.setItem('newProp', JSON.stringify(newProp));
+  // if (localStorage.getItem('newProp')){
+  //   newProp=[property,
+  //   ...JSON.parse(localStorage.getItem('newProp'))];
+  // }
+  // localStorage.setItem('newProp', JSON.stringify(newProp));
+  console.log(property)
+
+  return this.httpclient.post('https://localhost:7263/api/Property/add',property)
 }
 
 newPropID(){
@@ -79,6 +47,20 @@ newPropID(){
     return 101;
   }
 }
+
+GetPropertyTypes(){
+  return this.httpclient.get('https://localhost:7263/api/PropertyType/list')
+}
+
+GetFurnishTypes(){
+  return this.httpclient.get('https://localhost:7263/api/FurnishingType/list')
+}
+
+GetCityList(){
+  return this.httpclient.get('https://localhost:7263/api/City/GetCities')
+}
+
+
 
 
 }
