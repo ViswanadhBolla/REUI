@@ -26,11 +26,11 @@ curreny:any ="INR"
    }
 
   ngOnInit() {
-  console.log(this.property.city)
+  // console.log(this.property.city)
   }
 
   onSelected(data){
-    console.log("data",data)
+    // console.log("data",data)
     if(data === "INR" && this.curreny ==="USD"){
       this.property.price = +(this.property.price*81.98).toPrecision(2)
       this.curreny = data
@@ -43,7 +43,7 @@ curreny:any ="INR"
   }
 
   Wishdata(){
-    console.log("wish method called")
+    // console.log("wish method called")
     this.wishcontent.myMethod(this.property)
   }
 

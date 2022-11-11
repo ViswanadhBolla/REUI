@@ -26,13 +26,16 @@ GetAllproperties(sellRent?:number){
 }
 
 addProperty(property: Property){
-  let newProp =[property];
+  // let newProp =[property];
 
-  if (localStorage.getItem('newProp')){
-    newProp=[property,
-    ...JSON.parse(localStorage.getItem('newProp'))];
-  }
-  localStorage.setItem('newProp', JSON.stringify(newProp));
+  // if (localStorage.getItem('newProp')){
+  //   newProp=[property,
+  //   ...JSON.parse(localStorage.getItem('newProp'))];
+  // }
+  // localStorage.setItem('newProp', JSON.stringify(newProp));
+  console.log(property)
+
+  return this.httpclient.post('https://localhost:7263/api/Property/add',property)
 }
 
 newPropID(){
@@ -44,6 +47,20 @@ newPropID(){
     return 101;
   }
 }
+
+GetPropertyTypes(){
+  return this.httpclient.get('https://localhost:7263/api/PropertyType/list')
+}
+
+GetFurnishTypes(){
+  return this.httpclient.get('https://localhost:7263/api/FurnishingType/list')
+}
+
+GetCityList(){
+  return this.httpclient.get('https://localhost:7263/api/City/GetCities')
+}
+
+
 
 
 }

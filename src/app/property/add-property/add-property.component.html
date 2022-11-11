@@ -72,11 +72,11 @@
                     <label
                       *ngFor="let ptype of propertyTypes"
                       class="btn btn-outline-primary mx-2"
-                      [btnRadio]="ptype"
+                      [btnRadio]="ptype.name"
                       tabindex="0"
                       role="button"
                       name="PropType"
-                      >{{ ptype }}</label
+                      >{{ ptype.name }}</label
                     >
                   </div>
                   <div class="error-block" *ngIf = "propertyType.invalid && nextClicked">
@@ -96,11 +96,11 @@
                     <label
                       *ngFor="let ftype of furnishTypes"
                       class="btn btn-outline-primary mx-2"
-                      [btnRadio]="ftype"
+                      [btnRadio]="ftype.name"
                       tabindex="0"
                       role="button"
                       name="FurnishType"
-                      >{{ ftype }}</label
+                      >{{ ftype.name }}</label
                     >
                   </div>
                   <div class="error-block" *ngIf = "furnishingType.invalid && nextClicked">
@@ -124,12 +124,14 @@
 
                 <div class="form-group col-12">
                   <label for="type">City</label>
-                  <input
-                    type="text"
+                  <select
                     class="form-control"
                     [(ngModel)]="propertyView.city"
                     formControlName="city"
-                  />
+                  >
+                  <option value="">--select City--</option>
+                  <option *ngFor="let city of cityList" value={{city.name}}>{{city.name}}</option>
+                  </select>
                   <div class="error-block" *ngIf = "city.invalid && (nextClicked || city.touched)">
                     Please Enter City
                   </div>
@@ -274,7 +276,7 @@
                     >
                     <label
                       class="btn btn-outline-primary"
-                      btnRadio="2"
+                      btnRadio="0"
                       tabindex="0"
                       role="button"
                       >No</label
@@ -285,7 +287,7 @@
                   </div>
                 </div>
 
-                <div *ngIf="readyToMove.value==2"
+                <div *ngIf="readyToMove.value==0"
                 class="form-group col-6">
                   <label>Possession/Avaialble From</label>
                   <input type="date" class="form-control"
@@ -305,7 +307,7 @@
                   formControlName="gated" >
                     <label
                       class="btn btn-outline-primary mx-2"
-                      btnRadio="true"
+                      btnRadio="1"
                       tabindex="0"
                       role="button"
                       name="gated"
@@ -313,7 +315,7 @@
                     >
                     <label
                       class="btn btn-outline-primary"
-                      btnRadio="false"
+                      btnRadio="0"
                       tabindex="0"
                       role="button"
                       name="gated"

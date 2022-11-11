@@ -6,6 +6,9 @@ import { IPropertyBase } from 'src/app/models/iproperty-base';
 import { Property } from 'src/app/models/Property';
 import { HousingService } from 'src/app/services/housing.service';
 import { AlertifyService } from 'src/app/services/alertify.service';
+import { PropertyType } from 'src/app/models/property-type';
+import { FurnishTypes } from 'src/app/models/furnish-types';
+import { Cities } from 'src/app/models/cities';
 
 @Component({
   selector: 'app-add-property',
@@ -27,8 +30,9 @@ export class AddPropertyComponent implements OnInit {
   addPropertyForm: FormGroup
   nextClicked: boolean;
   property = new Property();
-  propertyTypes: Array<string>=['House','Apartment','Duplex'];
-  furnishTypes: Array<string> = ['Fully','Semi','Unfurnished']
+  propertyTypes: PropertyType[];
+  furnishTypes: FurnishTypes[];
+  cityList:Cities[];
 
   propertyView : IPropertyBase ={
     id:null,
@@ -45,6 +49,27 @@ export class AddPropertyComponent implements OnInit {
 
   ngOnInit() {
     this.CreateAddPropertyForm();
+    this.housingService.GetPropertyTypes().subscribe(
+      data=>{
+        this.propertyTypes=data['data']
+        // console.log(this.propertyTypes);
+
+      }
+    )
+    this.housingService.GetFurnishTypes().subscribe(
+      data=>{
+        this.furnishTypes=data['data']
+        // console.log(this.furnishTypes);
+
+      }
+    )
+    this.housingService.GetCityList().subscribe(
+      data=>{
+        this.cityList=data['data']
+        // console.log(this.cityList);
+
+      }
+    )
   }
 
   CreateAddPropertyForm(){
@@ -204,9 +229,15 @@ onSubmit(){
   this.nextClicked=true
   if(this.allTabsValid()){
     this.mapProperty();
-    this.housingService.addProperty(this.property);
+    this.housingService.addProperty(this.property).subscribe(data=>{
+      console.log(data)
+    },
+    error=>{
+      console.log(error);
+
+    });
     this.alertify.success('Congrats, property added');
-    console.log(this.addPropertyForm);
+    // console.log(this.addPropertyForm);
 
     if(this.sellRent.value==='2'){
       this.router.navigate(['/rent-property'])
@@ -228,7 +259,7 @@ mapProperty(): void {
   this.property.city = this.city.value;
   this.property.furnishingType = this.furnishingType.value;
   this.property.price = this.price.value;
-  this.property.security = this.security.value;
+  this.property.security = +this.security.value;
   this.property.maintenance = this.maintenance.value;
   this.property.builtArea = this.builtArea.value;
   this.property.carpetArea = this.carpetArea.value;
@@ -236,13 +267,17 @@ mapProperty(): void {
   this.property.totalFloors = this.totalFloors.value;
   this.property.address = this.address.value;
   this.property.address2 = this.LandMark.value;
-  this.property.readyToMove = this.readyToMove.value;
+  this.property.readyToMove = Boolean(+this.readyToMove.value);
   this.property.age = this.age.value;
-  this.property.gated = this.gated.value;
+  this.property.gated = Boolean(+this.gated.value);
   this.property.mainEntrance = this.mainEntrance.value;
-  this.property.estPossessionOn = this.PossessionOn.value;
+  this.property.estPossessionOn = new Date(this.PossessionOn.value);
   this.property.description = this.description.value;
   this.property.postedOn = new Date().toString();
+  this.property.propertyTypeId = this.propertyTypes.find(p=>p.name===this.property.propertyType)['id'];
+  this.property.furnishingTypeId = this.furnishTypes.find(p=>p.name===this.property.furnishingType)['id'];
+  this.property.cityId = this.cityList.find(p=>p.name===this.property.city)['id'];
+  this.property.lastUpdatedBy=+localStorage.getItem('tokenId')
 }
 
 allTabsValid() : boolean{
