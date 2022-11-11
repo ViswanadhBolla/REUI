@@ -9,6 +9,7 @@ import { AlertifyService } from 'src/app/services/alertify.service';
 import { PropertyType } from 'src/app/models/property-type';
 import { FurnishTypes } from 'src/app/models/furnish-types';
 import { Cities } from 'src/app/models/cities';
+import {ReactiveFormValidators} from 'src/app/validators/FormValidators.validator'
 
 @Component({
   selector: 'app-add-property',
@@ -79,7 +80,7 @@ export class AddPropertyComponent implements OnInit {
       BasicInfo:this.fb.group({
         sellRent: ['1', Validators.required],
       propertyType: [null, Validators.required],
-      name: [null, Validators.required],
+      name: [null, [Validators.required,Validators.minLength(5)]],
       bhk: [null, Validators.required],
       furnishingType: [null,Validators.required],
       city:[null,Validators.required]
@@ -115,7 +116,7 @@ export class AddPropertyComponent implements OnInit {
     })
   }
 
-
+// #region groups
   get BasicInfo(){
     return this.addPropertyForm.controls['BasicInfo'] as FormGroup
   }
@@ -258,7 +259,7 @@ mapProperty(): void {
   this.property.name = this.name.value;
   this.property.city = this.city.value;
   this.property.furnishingType = this.furnishingType.value;
-  this.property.price = this.price.value;
+  this.property.price = +this.price.value;
   this.property.security = +this.security.value;
   this.property.maintenance = this.maintenance.value;
   this.property.builtArea = this.builtArea.value;
@@ -278,6 +279,7 @@ mapProperty(): void {
   this.property.furnishingTypeId = this.furnishTypes.find(p=>p.name===this.property.furnishingType)['id'];
   this.property.cityId = this.cityList.find(p=>p.name===this.property.city)['id'];
   this.property.lastUpdatedBy=+localStorage.getItem('tokenId')
+  this.property.postedBy=+localStorage.getItem('tokenId')
 }
 
 allTabsValid() : boolean{
