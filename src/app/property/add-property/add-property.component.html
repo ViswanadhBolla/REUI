@@ -118,7 +118,7 @@
                     [(ngModel)]="propertyView.name"
                   />
                   <div class="error-block" *ngIf = "name.invalid && (nextClicked||name.touched)">
-                    Please Enter name
+                    Please Enter valid name (! Minimum 5 characters)
                   </div>
                 </div>
 
@@ -154,7 +154,7 @@
                   <label *ngIf="sellRent.value==1">Price (INR)</label>
                   <label *ngIf="sellRent.value==2">Rent (INR)</label>
                   <input
-                    type="text"
+                    type="number"
                     class="form-control"
                     formControlName="price"
                     [(ngModel)]="propertyView.price"
@@ -169,20 +169,20 @@
                 <div *ngIf="sellRent.value==2">
                   <div class="form-group col-12">
                     <label>Security (INR)</label>
-                    <input type="text" class="form-control" formControlName="security" />
+                    <input type="number" class="form-control" formControlName="security" />
                   </div>
                 </div>
 
                 <div class="form-group col-12">
                   <label>Maintenance (INR)</label>
-                  <input type="text" class="form-control"
+                  <input type="number" class="form-control"
                   formControlName="maintenance" />
                 </div>
 
                 <div class="form-group col-12">
                   <label>Built Area (in Sqr Feet)</label>
                   <input
-                    type="text"
+                    type="number"
                     class="form-control"
                     [(ngModel)]="propertyView.builtArea"
                     formControlName="builtArea"
@@ -195,7 +195,7 @@
 
                 <div class="form-group col-12">
                   <label>Carpet Area(in Sqr Feet)</label>
-                  <input type="text" class="form-control" formControlName="carpetArea" />
+                  <input type="number" class="form-control" formControlName="carpetArea" />
                 </div>
                 <div class="form-group col-12">
                   <button
@@ -218,13 +218,13 @@
               <tab heading="address" formGroupName="AddressInfo">
                 <div class="form-group col-12">
                   <label>Floor</label>
-                  <input type="text" class="form-control"
+                  <input type="number" class="form-control"
                   formControlName="floorNo" />
                 </div>
 
                 <div class="form-group col-12">
                   <label>Total Floor</label>
-                  <input type="text" class="form-control" formControlName="totalFloors" />
+                  <input type="number" class="form-control" formControlName="totalFloors" />
                 </div>
 
                 <div class="form-group col-12">
@@ -297,7 +297,7 @@
                 <div *ngIf="readyToMove.value==1"
                  class="form-group col-3">
                   <label>Age of Property</label>
-                  <input type="text" class="form-control"
+                  <input type="number" class="form-control"
                   formControlName="age" />
                 </div>
 

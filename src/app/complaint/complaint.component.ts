@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AlertifyService } from '../services/alertify.service';
 import { ComplaintService } from '../services/complaint.service';
 
@@ -18,10 +18,10 @@ export class ComplaintComponent implements OnInit {
 
   ngOnInit() {
 this.complaintform = new FormGroup({
-  firstname: new FormControl(),
-  email: new FormControl(),
-  subject: new FormControl(),
-  range: new FormControl( )
+  firstname: new FormControl(null, [Validators.required]),
+  email: new FormControl(null, [Validators.required, Validators.email]),
+  subject: new FormControl(null, [Validators.required]),
+  range: new FormControl( null, [Validators.required])
   })
 
   }

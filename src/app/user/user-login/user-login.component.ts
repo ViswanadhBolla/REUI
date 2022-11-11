@@ -24,7 +24,8 @@ export class UserLoginComponent implements OnInit {
   // console.log("token",token.code)
   if(token.code === 302 ){
   //  console.log("jwt",jwt_decode(token.data))
-    localStorage.setItem('token',jwt_decode(token.data)["Name"]);
+  localStorage.setItem("token",token.data)
+    localStorage.setItem('tokenUserName',jwt_decode(token.data)["Name"]);
     localStorage.setItem('tokenId',jwt_decode(token.data)["Id"]);
 
     this.alertify.success('login Successful');

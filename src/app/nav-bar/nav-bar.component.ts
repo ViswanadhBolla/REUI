@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from '../models/user';
 import { UserService } from '../services/user.service';
 
@@ -13,7 +14,7 @@ export class NavBarComponent implements OnInit {
   loggedinUserName: string = null;
   token:any;
   user :User;
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit() {
   }
@@ -23,14 +24,14 @@ export class NavBarComponent implements OnInit {
     // this.loggedinUserID=this.token[0]
     // this.loggedinUserName=this.token[1]
     this.loggedinUserID=localStorage.getItem('tokenId')
-    this.loggedinUserName=localStorage.getItem('token')
+    this.loggedinUserName=localStorage.getItem('tokenUserName')
 
     return this.loggedinUserID;
   }
   onLogout(){
     localStorage.removeItem('token');
     localStorage.removeItem('tokenId');
-
+    this.router.navigate(['/'])
   }
 
 }
