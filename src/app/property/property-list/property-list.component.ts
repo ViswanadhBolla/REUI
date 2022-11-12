@@ -20,7 +20,7 @@ export class PropertyListComponent implements OnInit {
   SortbyParam = '';
   SortDirection = 'asc';
 
-  images = ["assets/carousel-img/house-new-1.jpg","assets/carousel-img/house-new-2.jpg","assets/carousel-img/house-new-3.jpg"];
+  images = ["assets/images/internal-4.jpg","assets/images/internal-5.jpg","assets/images/house9.jpg"];
 
   constructor(private route:ActivatedRoute,private housingService:HousingService,private config:NgbCarouselConfig) {
     config.interval = 3000;
