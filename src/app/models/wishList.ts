@@ -1,14 +1,13 @@
-export interface IPropertyBase {
+export interface WishList {
   id: number;
   sellRent: number;
   name: string;
-  propertyType: string;
-  furnishingType:string;
+  propertyTypeId: string;
+  furnishingTypeID:string;
   price: number;
   bhk: number;
   builtArea: number;
   city: string;
   readyToMove: boolean;
   photo?: string;
-  db_RegisterId?:number;
 }

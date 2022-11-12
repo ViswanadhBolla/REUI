@@ -2,6 +2,7 @@ import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IPropertyBase } from 'src/app/models/iproperty-base';
+import { WishList } from 'src/app/models/wishList';
 import { WishlistService } from 'src/app/services/wishlist.service';
 
 @Component({
@@ -44,7 +45,11 @@ curreny:any ="INR"
 
   Wishdata(){
     // console.log("wish method called")
-    this.wishcontent.myMethod(this.property)
+    this.property.photo =""
+    this.property.db_RegisterId=+localStorage.getItem('tokenId');
+
+    this.wishcontent.wishPropery(this.property)
+   // this.wishcontent.myMethod(this.property)
   }
 
 

@@ -241,8 +241,10 @@ onSubmit(){
     // console.log(this.addPropertyForm);
 
     if(this.sellRent.value==='2'){
+      this.refresh()
       this.router.navigate(['/rent-property'])
     }else{
+      this.refresh1()
       this.router.navigate(['/'])
     }
   }else{
@@ -315,4 +317,31 @@ selectTab(tabId: number, isValid:boolean) {
 
   }
 }
+refresh(){
+  let timerId=    setInterval(() => {
+        //replaced function() by ()=>
+
+        this.router.navigateByUrl('/rent-properties', {skipLocationChange: false}).then(() => {
+        //  console.log( this.router.navigate(["/maps"]));
+      });
+      },1000);
+      console.log("refresh")
+
+
+     setTimeout(() => { clearInterval(timerId); 'stop' }, 1000);
+    }
+    refresh1(){
+      let timerId=    setInterval(() => {
+            //replaced function() by ()=>
+
+            this.router.navigateByUrl('/', {skipLocationChange: false}).then(() => {
+            //  console.log( this.router.navigate(["/maps"]));
+          });
+          },1000);
+          console.log("refresh")
+
+
+         setTimeout(() => { clearInterval(timerId); 'stop' }, 1000);
+        }
+
 }
