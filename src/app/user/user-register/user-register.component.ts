@@ -95,8 +95,6 @@ export class UserRegisterComponent implements OnInit {
     console.log(this.registrationForm);
     this.userSubmitted=true;
     if (this.registrationForm.valid) {
-      // this.user = Object.assign(this.user, this.registrationForm.value);
-      this.userService.addUser(this.userData());
     this.Register.RegisterUser(this.registrationForm.value).subscribe(data=>{
       console.log(data)
     }, err=>{
