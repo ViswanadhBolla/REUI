@@ -2,8 +2,8 @@
   <div class="col-sm-4 p-0">
     <div class="card">
       <div class="card-img-wrapper">
-        <img *ngIf="property.photo" class="card-img-top" src="../../assets/images/{{property.photo}}" alt="House" >
-        <img *ngIf="!property.photo" class="card-img-top" src="../../assets/images/house1.jpg" alt="House" >      </div>
+        <img *ngIf="mainPhotoUrl" class="card-img-top" src="{{mainPhotoUrl}}" alt="House" >
+        <img *ngIf="!mainPhotoUrl" class="card-img-top" src="../../assets/images/house1.jpg" alt="House" >      </div>
       <div class="card-body">
           <h1 class="card-title">
               {{property.name}}
@@ -128,6 +128,11 @@
 
           <ngx-gallery [options]="galleryOptions" [images]="galleryImages" class="ngx-gallery"></ngx-gallery>
         </tab>
+
+        <tab *ngIf="isOwner()" heading="Upload/Edit Photos">
+          <app-photo-editor [property]="property"></app-photo-editor>
+        </tab>
+
         <tab heading="Contact">
           <h1>Contact Detail</h1>
           <div>
