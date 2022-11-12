@@ -7,7 +7,10 @@
   color: #2b724bbf;
 
 }
+.search2{
+  background-color:#F5F5F5;
 
+}
 .font-highlight{
   font-style: italic;
   color: red;
@@ -16,6 +19,8 @@
 .card-img-wrapper{
   overflow: hidden;
   position: relative;
+  border-top-right-radius: 40px;
+  border-top-left-radius: 40px;
 }
 .card:hover img{
   transform: scale(1.2,1.2);
@@ -61,3 +66,7 @@ color: red;
   color: red;
   font-size: xx-large;
   }
+.card-body{
+  text-align: center;
+
+}

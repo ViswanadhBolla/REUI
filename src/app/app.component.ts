@@ -8,7 +8,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 })
 export class AppComponent {
   constructor(){
-    document.body.style.background = "#ffff";
+    document.body.style.background = "#F5F5F5";
   }
 
   title = 'REUI';

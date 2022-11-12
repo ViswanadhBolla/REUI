@@ -59,7 +59,7 @@ address=this.route.snapshot.paramMap.get("city")
       }
     }
   );
- 
+
   display: any;
   center: google.maps.LatLngLiteral = { lat: +localStorage.getItem("lat"), lng: +localStorage.getItem("lng") };
   zoom = 6;

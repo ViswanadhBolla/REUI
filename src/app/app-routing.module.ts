@@ -29,7 +29,6 @@ const routes: Routes = [
   {path:"maps/:city",component:GooglemapComponent},
   {path:"maps",component:GooglemapComponent},
   {path:"wishlist",component:WishlistComponent},
-  {path:"wishlister",component:WishlistComponent},
   {path:"user/profile/:id",component:UserProfileComponent, resolve:{'usr':UserProfileResolverService}},
   {path:"forgotpassword",component:ForgotPasswordComponent},
   {path:'**',component:Error404Component},

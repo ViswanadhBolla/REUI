@@ -1,53 +1,83 @@
-<div class="col-sm-8 m-auto px-4 pt-4">
-<h2>
-  <strong>
-    LOGIN
-  </strong>
-</h2>
-</div>
-<div class="card col-sm-8 m-auto p-4" style="border: none;">
-  <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
-    <!-- Email input -->
-    <div class="form-outline form-group mb-4">
-      <label class="form-label" >Name</label>
-      <input type="text"  required ngModel name="userName"  #userName="ngModel" required class="form-control" />
-      <span *ngIf="userName.invalid && (userName.touched||userName.dirty)" class="error-block">
-        Please provide name
-      </span>
-    </div>
-
-    <!-- Password input -->
-    <div class="form-outline form-group  mb-4">
-      <label class="form-label" >Password</label>
-      <input type="password"  class="form-control" required type="password" ngModel name="password"  #password="ngModel" required minlength="8"/>
-      <span *ngIf="password.invalid && (password.touched||password.dirty)" class="error-block">
-        Please provide password (minimum 8 characters)
-      </span>
-
-    </div>
-
-    <!-- 2 column grid layout for inline styling -->
-    <div class="row mb-4">
 
 
-      <div class="col">
-        <!-- Simple link -->
-        <a routerLink="/forgot-password">Forgot password?</a>
+<div class="search " style="width: 100%;">
+<!-- Section: Design Block -->
+<section class="background-radial-gradient overflow-hidden">
+
+  <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+    <div class="row gx-lg-5 align-items-center mb-5">
+      <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+        <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
+          The best offers <br />
+          <span style="color: hsl(218, 81%, 75%)">for your Properties</span>
+        </h1>
+        <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+          Temporibus, expedita iusto veniam atque, magni tempora mollitia
+          dolorum consequatur nulla, neque debitis eos reprehenderit quasi
+          ab ipsum nisi dolorem modi. Quos?
+        </p>
+      </div>
+
+      <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+        <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+        <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+
+        <div class="card bg-glass">
+
+          <div class="card-body px-4 py-5 px-md-5">
+          <div>
+            <h1>Login</h1>
+          </div>
+            <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
+              <!-- Email input -->
+              <div class="form-outline form-group mb-4">
+                <label class="form-label" >Name</label>
+                <input type="text"  required ngModel name="userName"  #userName="ngModel" required class="form-control" />
+                <span *ngIf="userName.invalid && (userName.touched||userName.dirty)" class="error-block">
+                  Please provide name
+                </span>
+              </div>
+
+              <!-- Password input -->
+              <div class="form-outline form-group  mb-4">
+                <label class="form-label" >Password</label>
+                <input type="password"  class="form-control" required type="password" ngModel name="password"  #password="ngModel" required minlength="8"/>
+                <span *ngIf="password.invalid && (password.touched||password.dirty)" class="error-block">
+                  Please provide password (minimum 8 characters)
+                </span>
+
+              </div>
+
+              <!-- 2 column grid layout for inline styling -->
+              <div class="row mb-4">
+
+
+                <div class="col">
+                  <!-- Simple link -->
+                  <a routerLink="/forgotpassword">Forgot password?</a>
+                </div>
+              </div>
+
+              <!-- Submit button -->
+              <div class="form-group ">
+                <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary btn-block mb-4">Sign in</button>
+
+              </div>
+
+
+              <!-- Register buttons -->
+              <div class="text-center">
+                <p>Not a member? <a routerLink="/user/register">Register</a></p>
+
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
-
-    <!-- Submit button -->
-    <div class="form-group ">
-      <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary btn-block mb-4">Sign in</button>
-
-    </div>
-
-
-    <!-- Register buttons -->
-    <div class="text-center">
-      <p>Not a member? <a routerLink="/user/register">Register</a></p>
-
-    </div>
-  </form>
-
+  </div>
+</section>
+<!-- Section: Design Block -->
 </div>
+

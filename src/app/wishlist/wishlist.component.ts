@@ -19,26 +19,15 @@ export class WishlistComponent implements OnInit {
 
   ngOnInit() {
     this.wishlist.GetWishedData(+localStorage.getItem("tokenId")).subscribe(data=>{
+      console.log(data.data)
       this.properties = data.data
-this.refresh()
+      if(data.code ===201){
+this.ngOnInit()
+      }
+// this.refresh()
       console.log("onit",this.properties.length)
     })
   }
-
-  refresh(){
-    let timerId=    setInterval(() => {
-          //replaced function() by ()=>
-
-          this.router.navigateByUrl('/wishlister', {skipLocationChange: false}).then(() => {
-          //  console.log( this.router.navigate(["/maps"]));
-        });
-        },1000);
-        console.log("refresh")
-
-
-       setTimeout(() => { clearInterval(timerId); 'stop' }, 1000);
-      }
-
 
     }
 

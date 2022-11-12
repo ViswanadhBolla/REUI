@@ -12,6 +12,8 @@ import { WishlistService } from 'src/app/services/wishlist.service';
 })
 export class PropertyCardComponent implements OnInit {
 curreny:any ="INR"
+wishicon = localStorage.getItem("token")
+
   status:any
   @Input() property:IPropertyBase;
   @Input() hideIcons : boolean;
