@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HousingService } from 'src/app/services/housing.service';
 import { IPropertyBase } from 'src/app/models/iproperty-base';
+import { NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions } from '@kolkov/ngx-gallery';
+import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -10,15 +12,28 @@ import { IPropertyBase } from 'src/app/models/iproperty-base';
   styleUrls: ['./property-list.component.css']
 })
 export class PropertyListComponent implements OnInit {
-
+  galleryOptions: NgxGalleryOptions[];
+  galleryImages: NgxGalleryImage[];
   sellRent=1;
   properties: Array<IPropertyBase>;
   city='';
   SortbyParam = '';
   SortDirection = 'asc';
-  constructor(private route:ActivatedRoute,private housingService:HousingService) { }
+
+  images = ["assets/carousel-img/house-new-1.jpg","assets/carousel-img/house-new-2.jpg","assets/carousel-img/house-new-3.jpg"];
+
+  constructor(private route:ActivatedRoute,private housingService:HousingService,private config:NgbCarouselConfig) {
+    config.interval = 3000;
+    config.wrap = true;
+    config.keyboard = false;
+    config.pauseOnHover = false;
+  }
+
+
+
 
   ngOnInit() {
+    console.log(this.images);
     if(this.route.snapshot.url.toString()){
 
       //console.log(this.route.snapshot.url.toString());
@@ -33,6 +48,47 @@ export class PropertyListComponent implements OnInit {
         console.log('httperror: ')
         console.log(err);
       })
+
+
+      this.galleryOptions = [
+        {
+          width: '100%',
+          height: '465px',
+          thumbnailsColumns: 4,
+          imageAnimation: NgxGalleryAnimation.Slide,
+          preview: true
+        }
+      ];
+
+
+    this.galleryImages = [
+      {
+        small: 'assets/images/internal-1.jpg',
+        medium: 'assets/images/internal-1.jpg',
+        big: 'assets/images/internal-1.jpg'
+      },
+      {
+        small: 'assets/images/internal-2.jpg',
+        medium: 'assets/images/internal-2.jpg',
+        big: 'assets/images/internal-2.jpg'
+      },
+      {
+        small: 'assets/images/internal-3.jpg',
+        medium: 'assets/images/internal-3.jpg',
+        big: 'assets/images/internal-3.jpg'
+      },
+      {
+        small: 'assets/images/internal-4.jpg',
+        medium: 'assets/images/internal-4.jpg',
+        big: 'assets/images/internal-4.jpg'
+      },
+      {
+        small: 'assets/images/internal-5.jpg',
+        medium: 'assets/images/internal-5.jpg',
+        big: 'assets/images/internal-5.jpg'
+      }
+    ];
+
       }
 
       onCityClear(){

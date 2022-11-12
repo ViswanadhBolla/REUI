@@ -27,12 +27,12 @@ import { FilterPipe } from './pipes/filter.pipe';
 import { SortPipe } from './pipes/sort.pipe';
 
 import { CommonModule } from '@angular/common';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 
 import { RegisterService } from './services/Register.service';
 import { Error404Component } from './error404/error404.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-
 
 
 
@@ -68,7 +68,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     TabsModule,
     ButtonsModule,
     GoogleMapsModule,
-    NgxGalleryModule
+    NgxGalleryModule,
+    NgbModule 
 
   ],
   providers: [
