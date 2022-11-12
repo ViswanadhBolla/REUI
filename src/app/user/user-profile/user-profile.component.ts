@@ -13,14 +13,13 @@ export class UserProfileComponent implements OnInit {
   constructor(private route:ActivatedRoute,private router : Router,private userService : UserService) { }
 
   public id : number;
-  user :User;
+  user :User ;
 
   ngOnInit() {
     this.id = this.route.snapshot.params['id']
     this.route.data.subscribe(
       (data:User)=>{
-        this.user = data['usr']
-        // console.log(this.user);
+        this.user = data['usr']['data']
 
       }
     )

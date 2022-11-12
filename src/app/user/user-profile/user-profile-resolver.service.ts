@@ -7,17 +7,20 @@ import { UserService } from 'src/app/services/user.service';
 @Injectable({
   providedIn: 'root'
 })
-export class UserProfileResolverService implements Resolve<User>{
+export class UserProfileResolverService implements Resolve<any>{
 
 constructor(private userService:UserService, private router: Router) { }
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): User | Observable<User> | Promise<User> {
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): User | Observable<any> | Promise<any> {
     const id: number = +route.params['id']
-    return this.userService.GetUserByID(id).pipe(
+    return this.userService.GetUserByID(id)
+    .pipe(
       catchError(error=>{
         console.log(error)
         return of(null)
       })
     )
+
+    return null
 
   }
 

@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-2" *ngFor="let photo of property.photos">
+    <img src="{{photo.imageUrl}}" alt="{{photo.imageUrl}}" class="img-thumbnail p-1">
+    <div class="text-center">
+      <button class="btn btn-sm"
+      (click)="setMainPhoto(photo.publicId)"
+      [disabled]="photo.isPrimary"
+      [ngClass]="photo.isPrimary ? 'btn-success active': 'btn-outline-success'"
+      >Main</button>
+      <button (click)="onDelete(photo.publicId)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="py-5" >
+  <form (ngSubmit)="onSubmit()">
+    <input type='file' (change)="readPhoto($event);" />
+    <br>
+    <p *ngIf="photo">{{photo.name}}</p>
+    <p>property id = {{property.id}}</p>
+
+
+
+  <button type="submit">submit</button>
+  </form>
+
+
+
+</div>
+
+

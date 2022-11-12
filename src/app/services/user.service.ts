@@ -9,31 +9,11 @@ import { User } from '../models/user';
 export class UserService {
 
   constructor(private httpClient:HttpClient) { }
-  addUser(user:User){
-    let users = [];
-    if(localStorage.getItem('Users')){
-      users=JSON.parse(localStorage.getItem('Users'));
-      users=[user,...users];
-
-    }
-    else{
-      users=[user];
-    }
-    localStorage.setItem('Users',JSON.stringify(users))
-  }
-
-  GetAllUsers():Observable<User[]>{
-
-    return this.httpClient.get<User[]>('/data/Users.json')
-
-
-  }
 
   GetUserByID(id:number){
-    return this.GetAllUsers().pipe(
-      map(usersArray=>{
-        return usersArray.find(p=>p.id===id)
-      })
-    )
+
+    return this.httpClient.get('https://localhost:7263/api/Auth/user/'+id)
+
+
   }
 }

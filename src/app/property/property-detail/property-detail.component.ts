@@ -18,9 +18,11 @@ export class PropertyDetailComponent implements OnInit {
     private housingService : HousingService, private sanitizer: DomSanitizer) { }
 
     public propertyId:number;
+    public mainPhotoUrl: string = null;
     property= new Property();
     galleryOptions: NgxGalleryOptions[];
     galleryImages: NgxGalleryImage[];
+    loggedinUserID: string = null;
     // url="http://localhost:4200/user/profile/"+this.property.postedBy;
     // urlSafe:SafeResourceUrl;
 
@@ -31,6 +33,8 @@ export class PropertyDetailComponent implements OnInit {
       (data:Property) => {
         // console.log(data)
         this.property = data['prp']['data']
+        console.log(this.property.photos)
+        this.loggedinUserID=localStorage.getItem('tokenId')
         // console.log(this.property);
 
       }
@@ -48,37 +52,37 @@ export class PropertyDetailComponent implements OnInit {
       }
     ];
 
-    this.galleryImages = [
-      {
-        small: 'assets/images/internal-1.jpg',
-        medium: 'assets/images/internal-1.jpg',
-        big: 'assets/images/internal-1.jpg'
-      },
-      {
-        small: 'assets/images/internal-2.jpg',
-        medium: 'assets/images/internal-2.jpg',
-        big: 'assets/images/internal-2.jpg'
-      },
-      {
-        small: 'assets/images/internal-3.jpg',
-        medium: 'assets/images/internal-3.jpg',
-        big: 'assets/images/internal-3.jpg'
-      },
-      {
-        small: 'assets/images/internal-4.jpg',
-        medium: 'assets/images/internal-4.jpg',
-        big: 'assets/images/internal-4.jpg'
-      },
-      {
-        small: 'assets/images/internal-5.jpg',
-        medium: 'assets/images/internal-5.jpg',
-        big: 'assets/images/internal-5.jpg'
-      }
-    ];
+    this.galleryImages = this.getPropertyPhotos();
 
 
   }
 
+  getPropertyPhotos(): NgxGalleryImage[]{
+    const photoUrls:NgxGalleryImage[] =[];
+    for(const photo of this.property.photos){
+      if(photo.isPrimary) {this.mainPhotoUrl = photo.imageUrl}
+      else{
+      photoUrls.push({
+        small: photo.imageUrl,
+        medium: photo.imageUrl,
+        big: photo.imageUrl
+      }
+
+      )
+    }
+  }
+    return photoUrls;
+
+  }
+
+  isOwner(){
+
+    if(+this.loggedinUserID===this.property.postedBy){
+      return true
+
+    }
+    return false
+  }
 
 
 }

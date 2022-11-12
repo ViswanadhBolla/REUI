@@ -33,6 +33,7 @@ import { UserProfileComponent } from './user/user-profile/user-profile.component
 import { RegisterService } from './services/Register.service';
 import { Error404Component } from './error404/error404.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { PhotoEditorComponent } from './property/photo-editor/photo-editor.component';
 
 
 
@@ -55,7 +56,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
       SortPipe,
       UserProfileComponent,
       Error404Component,
-      ForgotPasswordComponent
+      ForgotPasswordComponent,
+      PhotoEditorComponent
    ],
   imports: [
     BrowserModule,
