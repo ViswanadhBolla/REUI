@@ -17,7 +17,9 @@ import { WishlistComponent } from './wishlist/wishlist.component';
 
 const routes: Routes = [
   {path:'',component:PropertyListComponent},
+  {path:'sell',component:PropertyListComponent},
   {path:'rent-property',component:PropertyListComponent},
+  {path:'rent-properties',component:PropertyListComponent},
   {path:'add-property',component:AddPropertyComponent},
   {path:'property-detail/:id',component:PropertyDetailComponent, resolve:{'prp':PropertyDetailResolverService}},
   {path:'user/login',component:UserLoginComponent},
@@ -27,6 +29,7 @@ const routes: Routes = [
   {path:"maps/:city",component:GooglemapComponent},
   {path:"maps",component:GooglemapComponent},
   {path:"wishlist",component:WishlistComponent},
+  {path:"wishlister",component:WishlistComponent},
   {path:"user/profile/:id",component:UserProfileComponent, resolve:{'usr':UserProfileResolverService}},
   {path:"forgotpassword",component:ForgotPasswordComponent},
   {path:'**',component:Error404Component},
