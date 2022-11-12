@@ -102,10 +102,25 @@
           <div class="col-sm-12">
             <h1>Address</h1>
             <div class="heading">
-                <strong>{{property.address}}</strong><br/>
-                <strong>{{property.address2}}</strong><br/>
-                <strong>{{property.city}}</strong><br/>
-                <strong>{{property.country}}</strong>
+              <div class="col-sm-6 col-md-3">
+                <div class="flip-card mx-3">
+                  <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                      <img src="../../assets/images/address.jpg" alt="Avatar" style="width:300px;height:300px;">
+
+                    </div>
+                    <div class="flip-card-back">
+                      <h1 class="py-3">User Location</h1>
+                      <strong>{{property.address}}</strong><br/>
+                      <strong>{{property.address2}}</strong><br/>
+                      <strong>{{property.city}}</strong><br/>
+                      <strong>{{property.country}}</strong>
+
+
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             </div>
         </tab>
