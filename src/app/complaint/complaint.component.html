@@ -1,12 +1,15 @@
-<div class="pt-1">
-<h1 class="py-1" style="text-align:center;"><i style='font-size:24px' class='fas mx-1'>&#xf674;</i>Complaint Box</h1>
+<div class="col-8 m-auto pt-1 px-4">
+  <h2 class="py-1" >
+    <strong>
+      COMPLAINTS
+    </strong></h2>
 </div>
 
-<div class="container my-2 " style="width: 40%;">
+<div class="container col-8 my-2 " >
   <form [formGroup]="complaintform"  (ngSubmit)="onSubmit()" >
 
     <div>
-      <label for="fname">First Name</label>
+      <label for="fname">Name</label>
       <input type="text" id="fname" required class="form-control" formControlName="firstname"  placeholder="Your name..">
       <span *ngIf="!complaintform.get('firstname').valid && complaintform.get('firstname').touched" class="error-block">
         Please provide name

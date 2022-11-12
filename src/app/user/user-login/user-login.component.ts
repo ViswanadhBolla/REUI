@@ -27,7 +27,6 @@ export class UserLoginComponent implements OnInit {
   localStorage.setItem("token",token.data)
     localStorage.setItem('tokenUserName',jwt_decode(token.data)["Name"]);
     localStorage.setItem('tokenId',jwt_decode(token.data)["Id"]);
-
     this.alertify.success('login Successful');
     this.router.navigate(['/'])
 

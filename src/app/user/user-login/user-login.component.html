@@ -1,31 +1,53 @@
-<div class="row">
-  <div class="col-6 m-auto">
-    <div class="card m-auto">
-      <div class="card-header">
-        Login
-      </div>
-      <div class="card-body ">
-        <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
-          <div class="form-group col-12">
-            <label>Name</label>
-            <input class="form-control" autocomplete="off"  ngModel name="userName" #userName="ngModel" required>
-            <span *ngIf="userName.invalid && (userName.touched||userName.dirty)" class="error-block">
-              Please provide name
-            </span>
-          </div>
-          <div class="form-group col-12">
-            <label>Password</label>
-            <input class="form-control"  type="password" ngModel name="password" #password="ngModel" required minlength="8">
-            <span *ngIf="password.invalid && (password.touched||password.dirty)" class="error-block">
-              Please provide password (minimum 8 characters)
-            </span>
-          </div>
-          <div class="form-group col-12 pt-3">
-            <button type="submit"  [disabled]="!loginForm.valid"  class="btn btn-primary">Submit</button>
-            <button type="button" class="btn btn-secondary mx-2">Cancel</button>
-          </div>
-        </form>
+<div class="col-sm-8 m-auto px-4 pt-4">
+<h2>
+  <strong>
+    LOGIN
+  </strong>
+</h2>
+</div>
+<div class="card col-sm-8 m-auto p-4" style="border: none;">
+  <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
+    <!-- Email input -->
+    <div class="form-outline form-group mb-4">
+      <label class="form-label" >Name</label>
+      <input type="text"  required ngModel name="userName"  #userName="ngModel" required class="form-control" />
+      <span *ngIf="userName.invalid && (userName.touched||userName.dirty)" class="error-block">
+        Please provide name
+      </span>
+    </div>
+
+    <!-- Password input -->
+    <div class="form-outline form-group  mb-4">
+      <label class="form-label" >Password</label>
+      <input type="password"  class="form-control" required type="password" ngModel name="password"  #password="ngModel" required minlength="8"/>
+      <span *ngIf="password.invalid && (password.touched||password.dirty)" class="error-block">
+        Please provide password (minimum 8 characters)
+      </span>
+
+    </div>
+
+    <!-- 2 column grid layout for inline styling -->
+    <div class="row mb-4">
+
+
+      <div class="col">
+        <!-- Simple link -->
+        <a routerLink="/forgot-password">Forgot password?</a>
       </div>
     </div>
-  </div>
+
+    <!-- Submit button -->
+    <div class="form-group ">
+      <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary btn-block mb-4">Sign in</button>
+
+    </div>
+
+
+    <!-- Register buttons -->
+    <div class="text-center">
+      <p>Not a member? <a routerLink="/user/register">Register</a></p>
+
+    </div>
+  </form>
+
 </div>
