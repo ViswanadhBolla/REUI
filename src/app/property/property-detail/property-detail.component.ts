@@ -59,6 +59,8 @@ export class PropertyDetailComponent implements OnInit {
 
   getPropertyPhotos(): NgxGalleryImage[]{
     const photoUrls:NgxGalleryImage[] =[];
+    console.log(this.property.photos);
+
     for(const photo of this.property.photos){
       if(photo.isPrimary) {this.mainPhotoUrl = photo.imageUrl}
       else{
