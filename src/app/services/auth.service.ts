@@ -19,5 +19,14 @@ export class AuthService {
     // return UserArrayy.find(p=>p.userName === user.userName && p.password === user.password)
   }
 
+isloggedin(){
+  var token = localStorage.getItem("token")
+  if(token!= null){
+    return true
+  }
+  else{
+    return false
+  }
+}
 
 }

@@ -22,7 +22,9 @@ export class WishlistComponent implements OnInit {
       console.log(data.data)
       this.properties = data.data
       if(data.code ===201){
-this.ngOnInit()
+        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+          this.router.navigate(['/wishlist']);
+      });
       }
 // this.refresh()
       console.log("onit",this.properties.length)
