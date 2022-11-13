@@ -20,6 +20,8 @@ getProperty(id:number){
 }
 
 GetAllproperties(sellRent?:number){
+  console.log(sellRent);
+
 
    return this.httpclient.get('https://localhost:7263/api/Property/list/'+sellRent)
 
