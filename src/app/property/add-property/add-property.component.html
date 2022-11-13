@@ -136,6 +136,7 @@
                     formControlName="city"
                   >
                   <option value="">--select City--</option>
+                  
                   <option *ngFor="let city of cityList" value={{city.name}}>{{city.name}}</option>
                   </select>
                   <div class="error-block" *ngIf = "city.invalid && (nextClicked || city.touched)">

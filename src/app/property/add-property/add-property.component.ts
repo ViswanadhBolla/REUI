@@ -241,8 +241,9 @@ onSubmit(){
     // console.log(this.addPropertyForm);
 
     if(this.sellRent.value==='2'){
-      this.refresh()
-      this.router.navigate(['/rent-property'])
+      this.router.navigateByUrl('/rent-property', { skipLocationChange: true }).then(() => {
+        this.router.navigate(['/rent-property']);
+    });
     }else{
       this.refresh1()
       this.router.navigate(['/'])

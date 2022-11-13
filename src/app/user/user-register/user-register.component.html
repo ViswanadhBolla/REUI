@@ -1,77 +1,90 @@
-<div class="col-sm-8 m-auto">
-  <div class="px-4 pt-4">
-    <h2>
-      <strong>
-        REGISTER
-      </strong>
-    </h2>
-  </div>
-  <div class=" m-auto px-2">
-  <div class="card m-auto" style="border:none;">
+<!-- Section: Design Block -->
+<section class=" px-5 py-5 " >
+  <!-- Jumbotron -->
+  <div class="container  py-4">
+    <div class="row g-0 align-items-center">
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <div class="card cascading-right" style="
+            background: hsla(0, 0%, 100%, 0.55);
+            backdrop-filter: blur(30px);
+            ">
+          <div class="card-body p-5 shadow-5 text-center">
+            <h2 class="fw-bold mb-5">Sign up now</h2>
+            <div class="col-sm-8 m-auto">
+              <div class="px-4 pt-4">
+                <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+                  <div class="form-outline form-group mb-4">
+                      <label for="name" class="form-label">Name</label>
+                      <input type="text" class="form-control" formControlName="userName">
+                      <!-- <div *ngIf="userName.invalid && (userName.touched || userSubmitted)" class="error-block">
+                        Please provide name (minimum 8 characters)
+                      </div> -->
 
-    <div class="card-body">
-      <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
-        <div class="form-outline form-group mb-4">
-            <label for="name" class="form-label">Name</label>
-            <input type="text" class="form-control" formControlName="userName">
-            <!-- <div *ngIf="userName.invalid && (userName.touched || userSubmitted)" class="error-block">
-              Please provide name (minimum 8 characters)
-            </div> -->
+                  </div>
 
+                  <div class="form-outline form-group  mb-4">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="text" class="form-control" formControlName="email">
+                    <span *ngIf="!email.valid && (email.touched || userSubmitted)" class="error-block">
+                      <span *ngIf="email.hasError('required')">Please provide email</span>
+                      <span *ngIf="email.hasError('email')">Please provide valid email id</span>
+                    </span>
+                  </div>
+
+                  <div class="form-outline form-group  mb-4">
+                    <label for="passwrod" class="form-label">Password</label>
+                    <input type="password" class="form-control" formControlName="password">
+                    <span *ngIf="!password.valid && (password.touched || userSubmitted)" class="error-block">
+                      <span *ngIf="password.errors['required']">Please provide password</span>
+                      <span *ngIf="password.errors['minlength']">password greater than 8 characters</span>
+                    </span>
+                  </div>
+
+                  <div class="form-outline form-group mb-4">
+                    <label for="cpassword" class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control" formControlName="confirmPassword">
+                    <span *ngIf="!confirmPassword.valid && (confirmPassword.touched || userSubmitted)" class="error-block">
+                      <span *ngIf="confirmPassword.hasError('required')">Please provide password</span>
+
+                    </span>
+                    <span *ngIf="registrationForm.hasError('notmatched') && confirmPassword.valid" class="error-block"> password not matched</span>
+                  </div>
+
+                  <div class="form-outline form-group mb-4">
+                    <label for="mobile" class="form-label">Mobile</label>
+                    <input type="number" class="form-control" formControlName="mobile">
+                    <span *ngIf="!mobile.valid && (mobile.touched || userSubmitted)" class="error-block">
+                      <span *ngIf="mobile.errors['required']">Please provide phone number</span>
+                      <span *ngIf="mobile.errors['numberValid'] && (mobile.dirty)">Enter a valid number</span>
+                    </span>
+                  </div>
+
+                  <div class="form-outline form-group mb-4">
+                    <button type="submit" [disabled]="!registrationForm.valid" class="btn btn-primary">Register</button>
+                    <button type="reset" class="btn btn-secondary mx-2">Cancel</button>
+                  </div>
+
+                  <div class="text-center">
+                    <p>Already registered? <a routerLink="/user/login">Sign In</a></p>
+
+                  </div>
+                  <!-- FormValues:{{registrationForm.value|json}}
+                  FormStatus:{{registrationForm.valid}} -->
+                </form>
+              </div>
+              </div>
+
+          </div>
         </div>
+      </div>
 
-        <div class="form-outline form-group  mb-4">
-          <label for="email" class="form-label">Email</label>
-          <input type="text" class="form-control" formControlName="email">
-          <span *ngIf="!email.valid && (email.touched || userSubmitted)" class="error-block">
-            <span *ngIf="email.hasError('required')">Please provide email</span>
-            <span *ngIf="email.hasError('email')">Please provide valid email id</span>
-          </span>
-        </div>
-
-        <div class="form-outline form-group  mb-4">
-          <label for="passwrod" class="form-label">Password</label>
-          <input type="password" class="form-control" formControlName="password">
-          <span *ngIf="!password.valid && (password.touched || userSubmitted)" class="error-block">
-            <span *ngIf="password.errors['required']">Please provide password</span>
-            <span *ngIf="password.errors['minlength']">password greater than 8 characters</span>
-          </span>
-        </div>
-
-        <div class="form-outline form-group mb-4">
-          <label for="cpassword" class="form-label">Confirm Password</label>
-          <input type="password" class="form-control" formControlName="confirmPassword">
-          <span *ngIf="!confirmPassword.valid && (confirmPassword.touched || userSubmitted)" class="error-block">
-            <span *ngIf="confirmPassword.hasError('required')">Please provide password</span>
-
-          </span>
-          <span *ngIf="registrationForm.hasError('notmatched') && confirmPassword.valid" class="error-block"> password not matched</span>
-        </div>
-
-        <div class="form-outline form-group mb-4">
-          <label for="mobile" class="form-label">Mobile</label>
-          <input type="number" class="form-control" formControlName="mobile">
-          <span *ngIf="!mobile.valid && (mobile.touched || userSubmitted)" class="error-block">
-            <span *ngIf="mobile.errors['required']">Please provide phone number</span>
-            <span *ngIf="mobile.errors['numberValid'] && (mobile.dirty)">Enter a valid number</span>
-          </span>
-        </div>
-
-        <div class="form-outline form-group mb-4">
-          <button type="submit" [disabled]="!registrationForm.valid" class="btn btn-primary">Register</button>
-          <button type="reset" class="btn btn-secondary mx-2">Cancel</button>
-        </div>
-
-        <div class="text-center">
-          <p>Already registered? <a routerLink="/user/login">Sign In</a></p>
-
-        </div>
-        <!-- FormValues:{{registrationForm.value|json}}
-        FormStatus:{{registrationForm.valid}} -->
-      </form>
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <img src="../../../assets/images/internal-4.jpg" class="w-100 rounded-4 shadow-4"
+          alt="" />
+      </div>
     </div>
   </div>
-  </div>
-</div>
-
+  <!-- Jumbotron -->
+</section>
+<!-- Section: Design Block -->
 

@@ -13,7 +13,7 @@ export class PhotoService {
   addPhoto(propId: number, photoFile:any){
     console.log(propId);
     console.log(photoFile)
-     return this.httpClient.post('https://localhost:7263/api/Property/add/photo/'+propId,photoFile).subscribe(data=>{
+     return this.httpClient.post('https://localhost:7263/api/Photo/add/photo/'+propId,photoFile).subscribe(data=>{
       console.log(data);
 
      })
@@ -24,7 +24,7 @@ export class PhotoService {
     console.log(publicId);
 
 
-    return this.httpClient.delete('https://localhost:7263/api/Property/delete-photo/'+propId+"/"+publicId).subscribe(
+    return this.httpClient.delete('https://localhost:7263/api/Photo/deletephoto/'+propId+"/"+publicId).subscribe(
       data=>{
         console.log(data);
 

@@ -2,4 +2,21 @@
 @import 'assets/form.css';
 @import 'assets/tabs.css';
 @import '../node_modules/alertifyjs/build/css/alertify.min.css';
-@import '../node_modules/alertifyjs/build/css/themes/bootstrap.min.css'
+@import '../node_modules/alertifyjs/build/css/themes/bootstrap.min.css';
+
+
+.search{
+  background-color:white;
+    border-radius: 40px;
+    border-color: #dee2e6;
+}
+
+.pagecolor{
+  color: #952a2a;
+  font-weight: 500;
+}
+.search:hover{
+  background-color: ffff;
+    border-radius: 50px;
+   box-shadow: 0 0 11px rgba(33,33,33,.2);
+}

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from '../models/user';
 import { AlertifyService } from '../services/alertify.service';
 import { ComplaintService } from '../services/complaint.service';
@@ -20,8 +21,7 @@ export class ForgotPasswordComponent implements OnInit {
 
 
 
-
-  constructor(private fb: FormBuilder, private service:ComplaintService,private alert:AlertifyService) { }
+  constructor(private fb: FormBuilder,private router:Router, private service:ComplaintService,private alert:AlertifyService) { }
 
   ngOnInit(): void {
 
@@ -72,7 +72,19 @@ export class ForgotPasswordComponent implements OnInit {
   submit(data){
     console.log(data.value)
     this.service.changePassword(data).subscribe(data=>{
-      console.log("uawrestyui",data)
+      if(data.code ===201){
+        console.log("uawrestyui",data)
+        this.alert.success("Password Changed successfully");
+        this.router.navigateByUrl("/user/login")
+      }
+      else{
+        this.alert.error("Password not match")
+        this.submitflag = !true;
+        this.flag = this.flag
+        this.ngOnInit();
+
+      }
+
     },err=>{console.log(err)})
   }
 

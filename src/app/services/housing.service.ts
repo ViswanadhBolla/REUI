@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
 import { Observable } from 'rxjs';
+import { Cities } from '../models/cities';
 import { IProperty } from '../models/IProperty';
 import { Property } from '../models/Property';
 
@@ -19,6 +20,8 @@ getProperty(id:number){
 }
 
 GetAllproperties(sellRent?:number){
+  console.log(sellRent);
+
 
    return this.httpclient.get('https://localhost:7263/api/Property/list/'+sellRent)
 
@@ -64,7 +67,7 @@ GetFurnishTypes(){
 }
 
 GetCityList(){
-  return this.httpclient.get('https://localhost:7263/api/City/GetCities')
+  return this.httpclient.get<Cities[]>('https://localhost:7263/api/City/GetCities')
 }
 
 

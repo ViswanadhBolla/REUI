@@ -5,42 +5,40 @@
         <div class="picsum-img-wrapper">
           <img [src]="images[0]" style="max-height:400px;width: 100%; margin:0 auto;" alt="Random first slide" />
         </div>
-        <div class="carousel-caption">
+        <!-- <div class="carousel-caption">
           <h3>Joy of having a beautiful house</h3>
 
-        </div>
+        </div> -->
       </ng-template>
       <ng-template ngbSlide>
         <div class="picsum-img-wrapper">
           <img [src]="images[1]"  style="max-height:400px; width: 100%;margin:0 auto;" alt="Random second slide" />
         </div>
-        <div class="carousel-caption">
+        <!-- <div class="carousel-caption">
           <h3>Trusted selling solutions at your convenience</h3>
 
-        </div>
+        </div> -->
       </ng-template>
       <ng-template ngbSlide>
         <div class="picsum-img-wrapper">
           <img [src]="images[2]" style="max-height:400px;width: 100%; margin:0 auto;"  alt="Random third slide" />
         </div>
-        <div class="carousel-caption">
+        <!-- <div class="carousel-caption">
           <h3 >Crafted according to your expectations</h3>
 
-        </div>
+        </div> -->
       </ng-template>
     </ngb-carousel>
   </div>
 </div>
 
+<div class="container shadow search   m-0  mx-auto my-2">
 
-
-<div class="container rounded-3 m-0 mx-auto p-3" style="background-color:#393E46;">
-
-  <div class="col-sm-12 m-auto p-4">
+  <div class="col-sm-12 m-auto p-4 ">
     <div class=" d-flex mx-auto my-auto">
       <div class="col-sm-6 d-flex">
-       <input class="form-control me-sm-2" [(ngModel)]="city"  placeholder="Search by city">
-       <button class="btn btn-secondary my-2 my-sm-0"(click)="onCityClear()" type="button">Clear</button>
+       <input class="form-control me-sm-2 search " [(ngModel)]="city"    placeholder="Search by city">
+       <button class="btn  my-2 my-sm-0 pagecolor search" (click)="onCityClear()" type="button">Clear</button>
       </div>
 
 
@@ -48,11 +46,13 @@
          <div mx-auto >
            <button class="button"><h6>Sort By:</h6> </button>
          </div>
-         <select [(ngModel)]='SortbyParam' class="form-select mx-2" data-style="btn-success">
-           <option  value="city">City</option>
-           <option  value="price">Price</option>
+         <select [(ngModel)]='SortbyParam'   class=" pagecolor form-select mx-2 search" data-style="btn-success">
+
+            <option class="pagecolor "  value="city">City</option>
+            <option   class="pagecolor " value="price">Price</option>
+
          </select>
-          <button type="button px-2 mx-2" style="width:60px ;" (click)="onSortDirection()">
+          <button class="button1 " type="button px-2 mx-2 " style="width:60px ;" (click)="onSortDirection()">
             <i *ngIf="SortDirection==='asc'" class="fas fa-arrow-down"></i>
             <i *ngIf="SortDirection==='desc'" class="fas fa-arrow-up"></i>
           </button>
@@ -60,13 +60,20 @@
 
      </div>
   </div>
+
+</div>
+
+
+
+
+<div class="  shadow  m-0 search2  mx-auto p-3 py-5" >
   <div class="row">
-    <div *ngFor="let property of properties|filter:city:'city'|sort:[SortbyParam,SortDirection]" class="col-sm-4 p-3">
+    <div   *ngFor="let property of properties|filter:city:'city'|sort:[SortbyParam,SortDirection]" class="col-sm-4 p-3">
       <app-property-card [property]="property" ></app-property-card>
     </div>
   </div>
 
-</div>
+</div >
 
 
 
