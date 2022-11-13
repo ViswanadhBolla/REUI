@@ -34,6 +34,7 @@ import { RegisterService } from './services/Register.service';
 import { Error404Component } from './error404/error404.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { PhotoEditorComponent } from './property/photo-editor/photo-editor.component';
+import { PropertyDashboardComponent } from './property/property-dashboard/property-dashboard.component';
 
 
 
@@ -57,7 +58,8 @@ import { PhotoEditorComponent } from './property/photo-editor/photo-editor.compo
       UserProfileComponent,
       Error404Component,
       ForgotPasswordComponent,
-      PhotoEditorComponent
+      PhotoEditorComponent,
+      PropertyDashboardComponent
    ],
   imports: [
     BrowserModule,

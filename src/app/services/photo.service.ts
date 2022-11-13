@@ -42,7 +42,9 @@ export class PhotoService {
       headers:new HttpHeaders({
         'Content-Type':'application/json;charset=UTF-8'
       })
-    }).subscribe()
+    }).subscribe(data=>{
+      console.log('set main photo',data)
+    })
   }
 
 

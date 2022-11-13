@@ -67,9 +67,12 @@ GetFurnishTypes(){
 }
 
 GetCityList(){
-  return this.httpclient.get<Cities[]>('https://localhost:7263/api/City/GetCities')
+  return this.httpclient.get('https://localhost:7263/api/City/GetCities')
 }
 
+GetPropertyByPostedById(postedById: number){
+  return this.httpclient.get('https://localhost:7263/api/Property/ListOfProperties/'+postedById)
+}
 
 
 

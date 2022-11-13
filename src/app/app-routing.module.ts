@@ -7,6 +7,7 @@ import { Error404Component } from './error404/error404.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { GooglemapComponent } from './google-map/googlemap.component';
 import { AddPropertyComponent } from './property/add-property/add-property.component';
+import { PropertyDashboardComponent } from './property/property-dashboard/property-dashboard.component';
 import { PropertyDetailResolverService } from './property/property-detail/property-detail-resolver.service';
 import { PropertyDetailComponent } from './property/property-detail/property-detail.component';
 import { PropertyListComponent } from './property/property-list/property-list.component';
@@ -32,6 +33,7 @@ const routes: Routes = [
   {path:"wishlist",component:WishlistComponent,canActivate:[AuthGuardGuard]},
   {path:"user/profile/:id",component:UserProfileComponent, resolve:{'usr':UserProfileResolverService}},
   {path:"forgotpassword",component:ForgotPasswordComponent},
+  {path:"dashboard/:id", component:PropertyDashboardComponent},
   {path:'**',component:Error404Component},
 
 ];
