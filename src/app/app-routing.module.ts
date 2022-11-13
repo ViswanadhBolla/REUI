@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about/about.component';
+import { AuthGuardGuard } from './auth-guard.guard';
 import { ComplaintComponent } from './complaint/complaint.component';
 import { Error404Component } from './error404/error404.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
@@ -21,15 +22,15 @@ const routes: Routes = [
   {path:'sell',component:PropertyListComponent},
   {path:'rent-property',component:PropertyListComponent},
   {path:'rent-properties',component:PropertyListComponent},
-  {path:'add-property',component:AddPropertyComponent},
+  {path:'add-property',component:AddPropertyComponent,canActivate:[AuthGuardGuard]},
   {path:'property-detail/:id',component:PropertyDetailComponent, resolve:{'prp':PropertyDetailResolverService}},
   {path:'user/login',component:UserLoginComponent},
   {path:'user/register',component:UserRegisterComponent},
   {path:"complaint",component:ComplaintComponent},
   {path:"about",component:AboutComponent},
   {path:"maps/:city",component:GooglemapComponent},
-  {path:"maps",component:GooglemapComponent},
-  {path:"wishlist",component:WishlistComponent},
+  {path:"maps",component:GooglemapComponent,canActivate:[AuthGuardGuard]},
+  {path:"wishlist",component:WishlistComponent,canActivate:[AuthGuardGuard]},
   {path:"user/profile/:id",component:UserProfileComponent, resolve:{'usr':UserProfileResolverService}},
   {path:"forgotpassword",component:ForgotPasswordComponent},
   {path:"dashboard/:id", component:PropertyDashboardComponent},

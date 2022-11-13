@@ -1,25 +1,27 @@
  <div class="">
 
-  <div class="search">
+  <div class="search bg-white shadow-lg px-3 py-3 ">
     <div class="card-img-wrapper">
       <img *ngIf="property.photo" class="card-img-top" src="{{property.photo}}" alt="House" >
-      <img *ngIf="!property.photo" class="card-img-top" src="../../assets/images/house1.jpg" alt="House" >
+      <img *ngIf="!property.photo" class="card-img-top" src="../../assets/images/house.jpg" alt="House" >
       <ul *ngIf="!hideIcons" class="list-inline text-center member-icons animate">
         <li class="list-inline-item">
           <button class="btn btn-outline-secondary" routerLink="/property-detail/{{property.id}}"><i class="bi bi-pen"></i></button>
         </li>
         <!-- <li class="list-inline-item">
           <button class="btn btn-outline-dark"  ><i class="bi bi-person-lines-fill"></i></button>
+
         </li> -->
         <li class="list-inline-item">
+
           <button [hidden]="status"  class="btn btn-outline-danger"  routerLinkActive="active" routerLink="/maps/{{property.city}}"><i class="bi bi-geo-alt"></i></button>
         </li>
       </ul>
     </div>
 
-    <div class="card-body p-1 ">
+    <div  class="card-body bg-white shadow-lg   ">
 
-        <h1  [hidden]="status"  class="mb-0"> {{property.bhk}} BHK {{property.propertyType}}  <button (click)="Wishdata()" routerLink="/wishlist" class="btn fav" ><i class="bi bi-heart"></i></button></h1>
+        <h3  [hidden]="status"  class="mb-0"> {{property.bhk}} BHK {{property.propertyType}}  <button (click)="Wishdata()" routerLink="/wishlist" class="btn fav" ><i class="bi bi-heart"></i></button></h3>
 
 
       in {{property.name}}

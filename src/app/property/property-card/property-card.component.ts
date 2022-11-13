@@ -1,5 +1,6 @@
 import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { tick } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
 import { IPropertyBase } from 'src/app/models/iproperty-base';
 import { WishList } from 'src/app/models/wishList';
@@ -47,7 +48,11 @@ wishicon = localStorage.getItem("token")
 
   Wishdata(){
     // console.log("wish method called")
-    this.property.photo =""
+   if(this.property.photo ===null){
+    this.property.photo = ""
+   }
+ 
+    console.log(this.property)
     this.property.db_RegisterId=+localStorage.getItem('tokenId');
 
     this.wishcontent.wishPropery(this.property)
