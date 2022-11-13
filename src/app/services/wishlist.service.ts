@@ -30,6 +30,7 @@ export class WishlistService {
       }
 
       GetWishedData(id:number){
+        
         return this.http.get<any>(this.baseurl+"/userWished/"+id);
       }
 }

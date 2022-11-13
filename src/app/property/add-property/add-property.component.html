@@ -1,14 +1,14 @@
 <div class="row m-5 my-5">
-  <div class="col-8  p-0">
+  <div class="col-6  p-0">
     <div >
       <div class=" mt-4">
-        <h2>
+        <h2 class="pagecolor">
         <strong>
           List your Property
         </strong>
       </h2>
       </div>
-      <div class="card shadow-lg">
+      <div class="card  shadow-lg">
         <form (ngSubmit)="onSubmit()" [formGroup]="addPropertyForm">
           <div class="tab-panel">
             <tabset class="member-tabset" #formTabs>
@@ -136,7 +136,7 @@
                     formControlName="city"
                   >
                   <option value="">--select City--</option>
-                  
+
                   <option *ngFor="let city of cityList" value={{city.name}}>{{city.name}}</option>
                   </select>
                   <div class="error-block" *ngIf = "city.invalid && (nextClicked || city.touched)">
@@ -398,18 +398,13 @@
                 </div>
 
               </tab>
-              <tab heading="Photos">
-                <div class="form-group col-12">
-                  <div class="photo-control">
-                    <button class="mt-5" type="button">Upload</button> <br />
-                    This is under construction
-                  </div>
-                </div>
+              <tab heading="Submit"  >
 
-                <div class="form-group col-12">
+
+                <div class="form-group col-12 " >
                   <button
                   type="button"
-                  class="btn btn-primary btn-block col-12 mt-1"
+                  class="btn btn-primary center btn-block col-12 mt-1"
                   (click)="selectTab(3, true)"
                 >
                   Back
@@ -437,12 +432,12 @@
       </div>
     </div>
   </div>
-  <div class="col-4">
-    <div class="card-header">
-      <h3>Your property preview</h3>
+  <div class=" px-5 py-5 mt-4 col-4">
+    <div class="px-5">
+      <h5 class="pagecolor">Your property preview</h5>
     </div>
 
-    <div class="shadow-lg bg-white p-3">
+    <div class="mb-5">
       <app-property-card
         [property]="propertyView"
         [hideIcons]="true"

@@ -10,7 +10,7 @@ export class ComplaintService {
 
 constructor(private http:HttpClient) { }
 
-private baseurl = "https://localhost:7242/api/Email"
+private baseurl = "https://localhost:7263/api/Auth"
 
 private baseurl2="https://localhost:7263/api/Auth/"
 

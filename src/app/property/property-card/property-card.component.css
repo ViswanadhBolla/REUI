@@ -2,7 +2,7 @@
   min-height:  400px;
 }
 
-.card-body h1 {
+.card-body h3 {
   font-family: ui-sans-serif;
   color: #2b724bbf;
 
@@ -68,5 +68,7 @@ color: red;
   }
 .card-body{
   text-align: center;
+  border-bottom-right-radius: 40px;
+  border-bottom-left-radius: 40px;
 
 }

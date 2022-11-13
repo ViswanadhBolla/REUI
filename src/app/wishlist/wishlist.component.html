@@ -1,13 +1,11 @@
-<p>
-  wishlist works!
-</p>
+
 <div class="row">
   <div *ngFor="let property of properties" class="shadow-lg col-sm-4 p-3">
-    <div class="">
+    <div class=" search bg-white shadow-lg px-5 py-5">
 
       <div class="search">
         <div class="card-img-wrapper">
-          <img *ngIf="property.photo" class="card-img-top" src="../../assets/images/{{property.photo}}" alt="House" >
+          <img *ngIf="property.photo" class="card-img-top" src="{{property.photo}}" alt="House" >
           <img *ngIf="!property.photo" class="card-img-top" src="../../assets/images/house3.jpeg" alt="House" >
           <ul *ngIf="!hideIcons" class="list-inline text-center member-icons animate">
             <li class="list-inline-item">
@@ -23,8 +21,6 @@
         </div>
 
         <div class="card-body p-1 ">
-
-            <h1  [hidden]="status"  class="mb-0"> {{property.bhk}} BHK {{property.propertyType}}  <button (click)="Wishdata()" routerLink="/wishlist" class="btn fav" ><i class="bi bi-heart"></i></button></h1>
 
 
           in {{property.name}}
