@@ -38,11 +38,13 @@ export class PhotoService {
     console.log(publicId);
 
 
-    return this.httpClient.post('https://localhost:7263/api/Property/set-primary-photo/'+propId+"/"+publicId,{
+    return this.httpClient.post('https://localhost:7263/api/Photo/setprimaryphoto/'+propId+"/"+publicId,{
       headers:new HttpHeaders({
         'Content-Type':'application/json;charset=UTF-8'
       })
-    }).subscribe()
+    }).subscribe(data=>{
+      console.log('set main photo',data)
+    })
   }
 
 

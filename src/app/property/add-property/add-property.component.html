@@ -136,7 +136,7 @@
                     formControlName="city"
                   >
                   <option value="">--select City--</option>
-                  
+
                   <option *ngFor="let city of cityList" value={{city.name}}>{{city.name}}</option>
                   </select>
                   <div class="error-block" *ngIf = "city.invalid && (nextClicked || city.touched)">
@@ -437,7 +437,7 @@
       </div>
     </div>
   </div>
-  <div class="col-4">
+  <div class="col-4 ">
     <div class="card-header">
       <h3>Your property preview</h3>
     </div>
