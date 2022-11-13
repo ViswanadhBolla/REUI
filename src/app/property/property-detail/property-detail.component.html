@@ -1,38 +1,38 @@
-<div class=" row shadow">
+<div class="m-5 mt-5 row">
   <div class="col-sm-4 p-0">
     <div class="card">
       <div class="card-img-wrapper">
         <img *ngIf="mainPhotoUrl" class="card-img-top" src="{{mainPhotoUrl}}" alt="House" >
         <img *ngIf="!mainPhotoUrl" class="card-img-top" src="../../assets/images/house1.jpg" alt="House" >      </div>
       <div class="card-body">
-          <h1 class="card-title">
+          <h1 style="color:  #952a2a;">
               {{property.name}}
           </h1>
           <div>
             <strong>
-              {{property.bhk}} BHK {{property.propertyType}} @{{property.price}}
+
+              {{property.bhk}} BHK {{property.propertyType}} @ &#8377;{{property.price}}
+
+
             </strong>
           </div>
           <div>
             <strong>in {{property.city}}</strong>
           </div> <hr>
           <div>
-            <strong>Build area: </strong>{{property.builtArea}} Sqft
+            <strong>Build area: </strong>
+            {{property.builtArea}} Sqft
           </div>
+          <br>
           <div>
             <strong>Carpet Area: </strong>{{property.carpetArea}} Sqft
           </div>
+          <br>
           <div>
             <strong>Furnishing Type: </strong>{{property.furnishingType}}
           </div>
       </div>
-      <div class="card-footer">
-        <div class="btn-group d-flex">
-          <button class="btn btn-primary">Like</button>
-        <button class="btn btn-success">Message</button>
-        </div>
 
-      </div>
 
     </div>
 
@@ -41,7 +41,7 @@
     <div class="tab-panel p-3">
       <tabset class="member-tabset">
         <tab heading="Overview">
-          <h1>Overview</h1>
+          <h1 style="color:  #952a2a;">Overview</h1>
           <div class="row">
               <div class="col-sm-6">
                 <div class="heading">
@@ -61,7 +61,7 @@
 
               <div class="heading">
                   <strong>Posession</strong>
-                  <p>{{property.estPossessionOn}}</p>
+                  <p>{{property.estPossessionOn|date}}</p>
               </div>
               </div>
 
@@ -73,7 +73,8 @@
 
                 <div class="heading">
                     <strong>Gated Community</strong>
-                    <p>{{property.gated}}</p>
+                    <p *ngIf="property.gated" >Yes</p>
+                    <p *ngIf="!property.gated">No</p>
                 </div>
 
                 <div class="heading">
@@ -84,10 +85,7 @@
                     <strong>Maintenance</strong>
                     <p>{{property.maintenance}}</p>
                 </div>
-                <div class="heading">
-                  <strong>userID</strong>
-                  <p>{{property.postedBy}}</p>
-              </div>
+
             </div>
             <div class="col-sm-12">
                 <div class="heading">
@@ -98,9 +96,9 @@
 
           </div>
         </tab>
-        <tab heading="address">
+        <tab heading="Address">
           <div class="col-sm-12">
-            <h1>Address</h1>
+            <h1 style="color:  #952a2a;">Address</h1>
             <div class="heading">
               <div class="col-sm-6 col-md-3">
                 <div class="flip-card mx-3">
@@ -133,12 +131,13 @@
           <app-photo-editor [property]="property"></app-photo-editor>
         </tab>
 
-        <tab heading="Contact">
-          <h1>Contact Detail</h1>
+        <tab  heading="Contact">
+          <h1 style="color:  #952a2a;">Contact Detail</h1>
           <div>
 
             <!-- <iframe width="100%" height="100%" frameBorder="0" src="{{urlSafe}}"></iframe> -->
-            <a routerLink="/user/profile/{{property.postedBy}}">Click to view owner detials</a>
+            <a *ngIf="loggedinUserID" routerLink="/user/profile/{{property.postedBy}}">Click to view owner detials</a>
+            <a *ngIf="!loggedinUserID" routerLink="/user/login">Login to view contact details</a>
           </div>
         </tab>
 
