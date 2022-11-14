@@ -97,13 +97,21 @@ export class UserRegisterComponent implements OnInit {
     if (this.registrationForm.valid) {
     this.Register.RegisterUser(this.registrationForm.value).subscribe(data=>{
       console.log(data)
+      if(data.code ===406){
+        this.alertify.error(data.message)
+      }
+      else{
+        if(data.code == 201){
+          this.alertify.success(data.message)
+          this.router.navigate(['/user/login'])
+        }
+      }
+
     }, err=>{
       console.log("Error:",err)
     })
     //  this.registrationForm.reset();
-      this.userSubmitted=false;
-      this.alertify.success('Congrats,you are successfully registered.')
-      this.router.navigate(['/user/login'])
+      this.userSubmitted=false
 
     }
     else{
