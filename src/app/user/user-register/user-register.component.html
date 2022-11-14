@@ -13,10 +13,10 @@
             <div class="col-sm-10 m-auto">
               <div class="px-4 pt-4">
                 <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
-                  <div class="" style="display:flex;">
+                  <div class="" >
 
 
-                  <div class="form-outline col-4 form-group mb-4 px-1" style="width: 50%;" >
+                  <div class="form-outline col-12 form-group mb-4 px-1"  >
                       <label for="name" class="form-label">Name</label>
                       <input type="text" class="form-control" formControlName="userName">
                       <!-- <div *ngIf="userName.invalid && (userName.touched || userSubmitted)" class="error-block">
@@ -25,7 +25,7 @@
 
                   </div>
 
-                  <div class="form-outline form-group col-4 mb-4 px-1" style="width: 50% ;">
+                  <div class="form-outline  col-12  form-group col-4 mb-4 px-1" >
                     <label for="email" class="form-label">Email</label>
                     <input type="text" class="form-control" formControlName="email">
                     <span *ngIf="!email.valid && (email.touched || userSubmitted)" class="error-block">

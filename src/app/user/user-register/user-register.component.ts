@@ -41,7 +41,7 @@ export class UserRegisterComponent implements OnInit {
   createRegistrationForm() {
     this.registrationForm = this.fb.group(
       {
-        userName: new FormControl(null, [Validators.required,Validators.minLength(8)]),
+        userName: new FormControl(null, [Validators.required,Validators.minLength(3)]),
         email: new FormControl(null, [Validators.required, , Validators.email]),
         password: new FormControl(null, [
           Validators.required,
