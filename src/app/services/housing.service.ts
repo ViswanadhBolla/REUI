@@ -48,6 +48,16 @@ addProperty(property: Property){
   return this.httpclient.post('https://localhost:7263/api/Property/add',property,httpOptions)
 }
 
+deleteProperty(id:number){
+  const httpOptions = {
+    headers: new HttpHeaders({
+        Authorization: 'Bearer '+ localStorage.getItem('token')
+    })
+};
+
+return this.httpclient.delete('https://localhost:7263/api/Property/delete/'+id,httpOptions)
+}
+
 newPropID(){
   if(localStorage.getItem('PID')){
     localStorage.setItem('PID',String(+localStorage.getItem('PID') +1))

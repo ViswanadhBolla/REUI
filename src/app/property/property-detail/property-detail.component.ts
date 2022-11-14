@@ -86,5 +86,23 @@ export class PropertyDetailComponent implements OnInit {
     return false
   }
 
+  deleteProperty(){
+    this.housingService.deleteProperty(this.property.id).subscribe(
+      data=>{
+        console.log(data);
+
+      },
+      error=>{
+        console.log(error);
+
+      }
+    )
+
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/dashboard/'+this.loggedinUserID]);
+  });
+
+  }
+
 
 }
