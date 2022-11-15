@@ -26,7 +26,6 @@ export class WishlistComponent implements OnInit {
           this.router.navigate(['/wishlist']);
       });
       }
-// this.refresh()
       console.log("onit",this.properties.length)
     })
   }

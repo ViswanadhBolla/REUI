@@ -28,9 +28,10 @@ export class ForgotPasswordComponent implements OnInit {
     this.forgotpassword = new FormGroup({
       email: new FormControl(null,[Validators.required,Validators.email]),
       otp: new FormControl(),
-      password: new FormControl(),
+      password: new FormControl(null,[Validators.minLength(8)]),
       confirmPassword: new FormControl( )
-      })
+      },
+      { validators: this.passwordMatchingValidator })
 
     // this.forgotpassword= new FormGroup({
     //   email: new FormControl(null, [Validators.required, , Validators.email])
@@ -86,6 +87,11 @@ export class ForgotPasswordComponent implements OnInit {
       }
 
     },err=>{console.log(err)})
+  }
+  passwordMatchingValidator(fg: FormGroup): Validators {
+    return fg.get('password').value === fg.get('confirmPassword').value
+      ? null
+      : { notmatched: true };
   }
 
 }
